@@ -7,7 +7,7 @@ window.addEventListener("load", (_) => {
   aElement.href = "../static/resume.pdf";
   aElement.target = "_blank";
   aElement.text = "read curriculum vitae";
-  divInfo.textContent = `${age} years old · bandeirantes, paraná, brasil`;
+  divInfo.textContent = `${age} years old · greater campinas, são paulo, brasil`;
   infoElement.appendChild(divInfo);
   infoElement.appendChild(aElement);
 });
