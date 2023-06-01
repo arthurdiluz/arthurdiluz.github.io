@@ -1,13 +1,22 @@
 window.addEventListener("load", (_) => {
   const infoElement = document.querySelector("#shortInfo");
   const divInfo = document.createElement("div");
-  const aElement = document.createElement("a");
+  const resumeElement = document.createElement("a");
+  const separatorElement = document.createTextNode(" | ");
+  const curriculoElement = document.createElement("a");
   const age = String(moment().diff("1999-07-30", "years"));
 
-  aElement.href = "../static/resume.pdf";
-  aElement.target = "_blank";
-  aElement.text = "read curriculum vitae";
-  divInfo.textContent = `${age} years old · greater campinas, são paulo, brasil`;
+  resumeElement.href = "../static/resume.pdf";
+  resumeElement.target = "_blank";
+  resumeElement.text = "🇺🇸 read resume";
+
+  curriculoElement.href = "../static/curriculo.pdf";
+  curriculoElement.target = "_blank";
+  curriculoElement.text = "🇧🇷 ler curriculo";
+
+  divInfo.textContent = `${age} years old · campinas, são paulo, brasil`;
   infoElement.appendChild(divInfo);
-  infoElement.appendChild(aElement);
+  infoElement.appendChild(resumeElement);
+  infoElement.appendChild(separatorElement);
+  infoElement.appendChild(curriculoElement);
 });
