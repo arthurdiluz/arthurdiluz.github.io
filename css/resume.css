@@ -130,6 +130,25 @@ section.resume-section .resume-item .resume-date {
   min-width: auto;
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+  margin-top: 2%;
+  max-width: 100%;
+  height: auto;
+}
+
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
