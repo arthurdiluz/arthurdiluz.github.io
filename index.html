@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,13 +7,13 @@
   <meta name="description" content="Personal portfolio">
   <title>Arthur Diniz da Luz</title>
   <link rel="shortcut icon" href="static/images/icon.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed&display=swap" rel="stylesheet">
-  <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <link href="css/resume.min.css" rel="stylesheet">
+  <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="css/resume.min.css" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/resume.min.css">
+  </noscript>
 </head>
-
 <body id="page-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -34,13 +33,13 @@
           <a class="nav-link js-scroll-trigger" href="#about">about me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#background">background</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#experiences">experiences</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#projects">projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#background">background</a>
         </li>
       </ul>
     </div>
@@ -48,14 +47,25 @@
   <div class="container-fluid p-0">
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
-        <h1 class="mb-0">arthur</h1>
+        <h1 class="mb-0">arthur diniz</h1>
         <div class="subheading mb-4" id="shortInfo"></div>
         <p class="lead mb-2">
-          Since the inception of my Bachelor's degree in Computer Science in 2017, my journey in the realm of technology
-          has been unwavering. My enthusiasm lies in the fields of web and mobile development, where I have been
-          actively engaged professionally since 2021.
-          <!-- <p class="lead mb-2">
-        </p> -->
+        <p class="lead">
+          Since beginning my Bachelor's in Computer Science in 2017, I've immersed myself in projects and hackathons
+          that sharpened my technical abilities and set the foundation for my professional journey. My experience as a
+          Software Engineer spans the full stack, from building scalable backend architectures to crafting seamless
+          frontend interfaces and mobile applications. I specialize in developing web and mobile solutions that solve
+          real-world challenges, with a focus on delivering exceptional user experiences that drive engagement and
+          business growth.
+        </p>
+        <p class="lead">
+          I thrive in environments that demand innovative thinking and a proactive approach to problem-solving. My
+          passion lies in turning complex challenges into intuitive, effective solutions by blending technical
+          expertise
+          with a clear understanding of business goals. I am committed to creating impactful software that not only
+          meets current needs but also scales for the future, always aiming to exceed expectations and push the
+          boundaries of what technology can achieve.
+        </p>
         </p>
         <p class="lead mb-0"><strong>Get in touch with me through...</strong></p>
         <div class="social-icons row row-cols-auto pl-2">
@@ -80,6 +90,146 @@
             <a href="mailto:arthurdiluz@outlook.com" target="_blank" title="Email">
               <i class="fa fa-envelope"></i>
             </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="m-0">
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experiences">
+      <div class="w-100">
+        <h2 class="mb-4">Experiences</h2>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Software Engineer @ Noah Systems</h3>
+            <p>
+              During my time at Noah Systems, I led the development of cutting-edge solutions, focusing on omnichannel
+              communication and SaaS tools:
+            <ul>
+              <li><strong>Bragi:</strong> A robust omnichannel platform integrating messaging services like WhatsApp,
+                Instagram, Messenger, and Telegram. I spearheaded backend development using Express.js and PostgreSQL,
+                containerized the application with Docker, and deployed it on AWS. Additionally, I led the mobile app
+                development using React Native and Expo, optimizing performance and integrating WebSockets for real-time
+                communication.</li>
+              <li><strong>Backoffice:</strong> Developed an internal administrative tool from scratch using a
+                Golang-based hexagonal architecture. I created the frontend with Next.js and Ant Design, implemented a
+                scalable database structure, and ensured data integrity. My efforts streamlined operations and boosted
+                team productivity by automating repetitive tasks.</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"><i class="fa fa-calendar-alt"></i> March 2024 - October 2024</span>
+          </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Software Engineer @ Superior Digital</h3>
+            <p>
+              I developed and maintained software solutions that optimized client operations, with a focus on platforms
+              that delivered significant improvements:
+            <ul>
+              <li><strong>CertifyMyRent:</strong> Led the full-stack development of a property management platform,
+                involving database design, API development, system architecture, and AWS deployment with CI/CD.
+                Integrated solutions for document management, data security, and UI optimization for a seamless user
+                experience.</li>
+              <li><strong>Construction Help Finder:</strong> Improved app stability and user engagement by enhancing
+                features and fixing critical bugs. Implemented in-app payments with RevenueCat, ensuring smooth
+                integration and App Store compliance.</li>
+              <li><strong>Cross Roads Gamification:</strong> Developed interactive restaurant gamification features
+                using Next.js to elevate customer engagement.</li>
+              <li><strong>L&Co Store:</strong> Managed the iOS development, focusing on user experience enhancements and
+                implementing a push notification system with OneSignal for increased customer engagement.</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"><i class="fa fa-calendar-alt"></i> June 2023 - February 2024</span>
+          </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Developer @ TO Brasil</h3>
+            <p>
+              As a Systems Programmer at TO Brasil, I worked with Petrobras, where my responsibilities included:
+            <ul>
+              <li>Specializing in data virtualization using TIBCO Data Virtualization (TDV) to manage diverse data
+                sources. Developed REST and SOAP APIs and created custom views for in-depth data insights.</li>
+              <li>Participated in professional training to enhance data manipulation techniques and mastered Power BI
+                for data visualization.</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"><i class="fa fa-calendar-alt"></i> January 2023 - May 2023</span>
+          </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Software Engineer @ Kodde</h3>
+            <p>
+              I contributed to multiple innovative projects at Kodde, including:
+            <ul>
+              <li><strong>Kodde Time:</strong> Maintained and enhanced features of this internal project, developing the
+                backend with ExpressJS and building frontend interfaces with React.</li>
+              <li><strong>Madalu:</strong> Played a crucial role in building a salon management platform from the ground
+                up, developing the backend using NestJS, Docker, and PostgreSQL. I also contributed to frontend
+                improvements, ensuring a cohesive user experience.</li>
+              <li><strong>Other projects:</strong> Wrote automated tests using Jest and frontend tests with Storybook to
+                ensure high-quality software delivery.</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"><i class="fa fa-calendar-alt"></i> January 2022 - November 2022</span>
+          </div>
+        </div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
+          <div class="resume-content">
+            <h3 class="mb-0">Trainee @ Tata Consultancy Services (TCS)</h3>
+            <p>
+              Started my professional journey at TCS, where I:
+            <ul>
+              <li>Participated in foundational training in web development, Object-Oriented Programming, and Java,
+                building a solid technical foundation.</li>
+              <li>Advanced to a Trainee role, where I provided consultancy for Roche, using the OutSystems low-code tool
+                to streamline their application development process.</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"><i class="fa fa-calendar-alt"></i> July 2021 - January 2022</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="m-0">
+    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="projects">
+      <div class="w-100">
+        <h2 class="mb-4">projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>TourLibras</h3>
+            <div><text>In development...</text></div>
+            <a href="https://github.com/arthurdiluz/tourlibras-api" target="_blank">API Repository</a>
+            <text> | </text>
+            <a href="https://github.com/arthurdiluz/tourlibras-app" target="_blank">App Repository</a>
+            <img src="./static/images/projects-images/tourlibras.jpeg" alt="TourLibras banner">
+          </div>
+          <div class="project-card">
+            <h3>Xfut</h3>
+            <div><text>In development...</text></div>
+            <a href="https://github.com/iohub-technology" target="_blank">Team Repository</a>
+            <img src="./static/images/projects-images/xfut.jpeg" alt="XFut banner">
+          </div>
+          <div class="project-card">
+            <h3>be the hero</h3>
+            <a href="https://github.com/arthurdiluz/be-the-hero" target="_blank">Project Repository</a>
+            <img src="./static/images/projects-images/be-the-hero.jpeg" alt="BeTheHero banner">
+          </div>
+          <div class="project-card">
+            <h3>The 2048</h3>
+            <a href="https://github.com/arthurdiluz/the-2048" target="_blank">Project Repository</a>
+            <img src="./static/images/projects-images/The-2048.jpeg" alt="The 2048 banner">
           </div>
         </div>
       </div>
@@ -127,160 +277,6 @@
         </div>
       </div>
     </section>
-    <hr class="m-0">
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experiences">
-      <div class="w-100">
-        <h2 class="mb-4">experiences</h2>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
-          <div class="resume-content">
-            <h3 class="mb-0">software engineer @ superior digital</h3>
-            <div class="subheading mb-2"></div>
-            <p>
-              I work as a Software Engineer, developing and maintaining software solutions tailored to client needs.
-              Some projects include:
-            <ul>
-              <li><strong>CertifyMyRent:</strong> The <a href="https://www.certifymyrent.com">CertifyMyRent</a> is a
-                platform that empowers property owners to efficiently oversee their real estate holdings, handle tenant
-                affairs, and streamline the complete tenant screening procedure.
-                <div>I've worked in designing database
-                  models, API development, system architecture, containerization, and cloud deployment using AWS Elastic
-                  Beanstalk with CI/CD. I've tackled document management, image processing, data security challenges,
-                  and
-                  integrated services like PandaDoc for workflow enhancement. In the frontend, I've built new features
-                  and
-                  optimized mobile and desktop UI for better user experiences.</div>
-              </li>
-              <li><strong>Construction Help Finder:</strong> <a
-                  href="https://apps.apple.com/br/app/construction-help-finder-app/id6463634305">Construction Help
-                  Finder</a>
-                It's an app that connects construction workers with project managers, facilitating job discovery,
-                portfolio browsing, local job listings and simplified hiring in the construction industry.
-                <div>My contribution was to improve the user experience through feature enhancements and bug fixes. I
-                  implemented the iOS in-app payment system with RevenueCat and ensured bug-free App Store publishing.
-                </div>
-              </li>
-              <!--  -->
-              <li><strong>Cross Roads Gamification:</strong>
-                is a restaurant gamification platform that provides an innovative experience, integrating playful and
-                interactive aspects to improve customer interaction with gastronomic establishments.
-                <div>I collaborated on web development with NextJs.</div>
-              </li>
-              <li><strong>L&Co Store:</strong><a href="https://apps.apple.com/br/app/l-co-store/id6470309044">L&Co
-                  Store</a>
-                is a mobile app that serves as a fashion shop.
-                <div>I managed the app on the iOS side, enhancing user experience and implementing the notification
-                  system with OneSignal.
-                </div>
-              </li>
-            </ul>
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary"><i class="fa fa-calendar-alt"></i> June 2023 - February 2024</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
-          <div class="resume-content">
-            <h3 class="mb-0">developer @ to brasil</h3>
-            <div class="subheading mb-2"></div>
-            <p>
-              At TO Brazil I was a Systems Programmer and worked with the client <a
-                href="https://petrobras.com.br/en/">Petrobras</a>, where:
-            <ul>
-              <li>As a data virtualization specialist, I was responsible for managing a wide variety of data sources,
-                applying the virtualization technique through the TIBCO Data Virtualization (TDV) platform. In that
-                capacity, I was tasked with developing REST and SOAP APIs, as well as creating custom views that
-                provided valuable customer insights so they could understand their data more deeply and comprehensively.
-              </li>
-              <li>As part of my professional improvement program in the data area, I participated in training that
-                included improvement in data manipulation techniques, as well as mastery of the Power BI tool.</li>
-            </ul>
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary"><i class="fa fa-calendar-alt"></i> January 2023 - May 2023</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
-          <div class="resume-content">
-            <h3 class="mb-0">software engineer @ kodde</h3>
-            <div class="subheading mb-2"></div>
-            <p>
-              I contributed to several notable projects, such as:
-            <ul>
-              <li><strong>Kodde Time:</strong> As part of Kodde's internal project, I worked on maintaining and
-                implementing new features. I was responsible for developing both the backend, using ExpressJS, and the
-                frontend, using React.</li>
-              <li><strong>Madalu:</strong> The <a href="https://portal.madalu.com.br/signin">Madalu project</a> aims to
-                help people search for nearby beauty salons and
-                schedule services, in addition to providing salon networks with the management of schedules, employees,
-                and operations in general.
-                <div>Since the beginning of the project, I participated in the gathering of requirements and business
-                  rules, I was responsible for the development of the backend and API using NestJS, where I configured
-                  the environment using Docker, PostgreSQL, and AWS S3, configured the API documentation with Swagger,
-                  and modeled database entities using PrismaJS. I also participated in frontend development, maintaining
-                  some components in React.</div>
-              </li>
-              <li><strong>Other projects:</strong> I briefly participated in other projects, writing automated tests
-                using Jest and
-                frontend tests with Storybook.</li>
-            </ul>
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary"><i class="fa fa-calendar-alt"></i> January 2022 - November 2022</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-4">
-          <div class="resume-content">
-            <h3 class="mb-0">trainee @ tata consultancy services (tcs)</h3>
-            <div class="subheading mb-2"></div>
-            <p>
-            <div>I started professionally at TCS, where I was an intern. In it, I participated in basic training in
-              basic web, Object Oriented Programming, and JAVA.</div>
-            <div>Due to my good performance in the internship program, I was admitted as a Trainee and started to
-              provide consultancy for Roche using the OutSystems low-code tool.
-            </div>
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary"><i class="fa fa-calendar-alt"></i> July 2021 - January 2022</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <hr class="m-0">
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="projects">
-      <div class="w-100">
-        <h2 class="mb-4">projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <h3>TourLibras</h3>
-            <div><text>In development...</text></div>
-            <a href="https://github.com/arthurdiluz/tourlibras-api" target="_blank">API Repository</a>
-            <text> | </text>
-            <a href="https://github.com/arthurdiluz/tourlibras-app" target="_blank">App Repository</a>
-            <img src="./static/images/projects-images/tourlibras.jpeg" alt="TourLibras banner">
-          </div>
-          <div class="project-card">
-            <h3>Xfut</h3>
-            <div><text>In development...</text></div>
-            <a href="https://github.com/iohub-technology" target="_blank">Team Repository</a>
-            <img src="./static/images/projects-images/xfut.jpeg" alt="XFut banner">
-          </div>
-          <div class="project-card">
-            <h3>be the hero</h3>
-            <a href="https://github.com/arthurdiluz/be-the-hero" target="_blank">Project Repository</a>
-            <img src="./static/images/projects-images/be-the-hero.jpeg" alt="BeTheHero banner">
-          </div>
-          <div class="project-card">
-            <h3>The 2048</h3>
-            <a href="https://github.com/arthurdiluz/the-2048" target="_blank">Project Repository</a>
-            <img src="./static/images/projects-images/The-2048.jpeg" alt="The 2048 banner">
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/jquery/jquery.easing.min.js"></script>
@@ -289,5 +285,4 @@
   <script src="js/assets.min.js"></script>
   <script src="js/resume.min.js"></script>
 </body>
-
 </html>
