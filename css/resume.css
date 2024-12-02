@@ -292,6 +292,11 @@ p,
   font-weight: 400;
 }
 
+.resume-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 a,
 .social-icons a,
 .resume-date {
