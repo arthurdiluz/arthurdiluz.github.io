@@ -1,4 +1,3 @@
-/* Roboto Font-Face Declarations */
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Regular.ttf) format("truetype");
@@ -69,7 +68,6 @@
   font-style: italic;
 }
 
-/* Consolidated Body and HTML Styles */
 body,
 html {
   font-family: "Roboto", sans-serif;
@@ -78,7 +76,6 @@ html {
   color: #7b898a;
 }
 
-/* Responsive Body Padding */
 @media (min-width: 992px) {
   body {
     padding-top: 0;
@@ -86,7 +83,6 @@ html {
   }
 }
 
-/* Headings Consolidated (Using Only Roboto) */
 h1,
 h2,
 h3,
@@ -112,25 +108,21 @@ h3 {
   font-size: 2rem;
 }
 
-/* Bold Text */
 b {
   color: #1e1131;
 }
 
-/* Lead Paragraphs */
 p.lead {
   font-size: 1.2rem;
   font-weight: 400;
 }
 
-/* Subheading (Updated to Use Roboto) */
 .subheading {
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
 }
 
-/* Social Icons */
 .social-icons a {
   display: inline-block;
   height: 4rem;
@@ -149,19 +141,16 @@ p.lead {
   background-color: #ad77f7;
 }
 
-/* Developer Icons */
 .dev-icons {
   font-size: 3rem;
 }
 
-/* Side Navigation Links */
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 }
 
-/* Side Navigation for Larger Screens */
 @media (min-width: 992px) {
   #sideNav {
     text-align: center;
@@ -210,7 +199,6 @@ p.lead {
   }
 }
 
-/* Resume Section */
 section.resume-section {
   padding-bottom: 5rem !important;
 }
@@ -219,7 +207,6 @@ section.resume-section .resume-item .resume-date {
   min-width: auto;
 }
 
-/* Project Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -239,7 +226,6 @@ section.resume-section .resume-item .resume-date {
   height: auto;
 }
 
-/* Responsive Resume Section */
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
@@ -257,7 +243,6 @@ section.resume-section .resume-item .resume-date {
   }
 }
 
-/* Primary Background and Text Colors */
 .bg-primary {
   background: linear-gradient(180deg, #8e44ad 0%, #9b59b6 100%);
 }
@@ -266,7 +251,6 @@ section.resume-section .resume-item .resume-date {
   color: #5b3393 !important;
 }
 
-/* Links */
 a {
   color: #6b3cac;
 }
@@ -282,7 +266,6 @@ a:active {
   color: #a366f6;
 }
 
-/* Additional Typography Adjustments */
 .navbar-brand,
 .resume-section h2,
 .resume-item h3 {
