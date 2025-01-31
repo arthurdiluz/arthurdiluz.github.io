@@ -1,58 +1,67 @@
-/* Import local Roboto font faces */
+/* Roboto Font-Face Declarations */
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Regular.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Italic.ttf) format("truetype");
   font-weight: 400;
   font-style: italic;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Bold.ttf) format("truetype");
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-BoldItalic.ttf) format("truetype");
   font-weight: 700;
   font-style: italic;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Light.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-LightItalic.ttf) format("truetype");
   font-weight: 300;
   font-style: italic;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Black.ttf) format("truetype");
   font-weight: 900;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-BlackItalic.ttf) format("truetype");
   font-weight: 900;
   font-style: italic;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Medium.ttf) format("truetype");
   font-weight: 500;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-MediumItalic.ttf) format("truetype");
@@ -60,15 +69,16 @@
   font-style: italic;
 }
 
-/* Body and HTML defaults to Roboto */
+/* Consolidated Body and HTML Styles */
 body,
 html {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: #7b898a;
   padding-top: 54px;
+  color: #7b898a;
 }
 
+/* Responsive Body Padding */
 @media (min-width: 992px) {
   body {
     padding-top: 0;
@@ -76,7 +86,7 @@ html {
   }
 }
 
-/* Headings */
+/* Headings Consolidated (Using Only Roboto) */
 h1,
 h2,
 h3,
@@ -84,42 +94,43 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", sans-serif;
-  font-weight: 700; /* overridden below if needed */
   text-transform: uppercase;
   color: #4c2b7b;
+  font-weight: 700;
 }
 
-/* Specific heading sizes (keep original) */
 h1 {
   font-size: 5rem;
   line-height: 5rem;
 }
+
 h2 {
   font-size: 4rem;
 }
+
 h3 {
   font-size: 2rem;
 }
 
-/* Bold text color */
+/* Bold Text */
 b {
   color: #1e1131;
 }
 
-/* Lead paragraphs */
+/* Lead Paragraphs */
 p.lead {
   font-size: 1.2rem;
   font-weight: 400;
 }
 
-/* Subheading text */
+/* Subheading (Updated to Use Roboto) */
 .subheading {
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
 }
 
-/* Social icons */
+/* Social Icons */
 .social-icons a {
   display: inline-block;
   height: 4rem;
@@ -133,21 +144,24 @@ p.lead {
   margin-right: 1rem;
   margin-top: 1rem;
 }
+
 .social-icons a:hover {
   background-color: #ad77f7;
 }
 
-/* Dev icons */
+/* Developer Icons */
 .dev-icons {
   font-size: 3rem;
 }
 
-/* Navbar adjustments */
+/* Side Navigation Links */
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 }
+
+/* Side Navigation for Larger Screens */
 @media (min-width: 992px) {
   #sideNav {
     text-align: center;
@@ -160,16 +174,19 @@ p.lead {
     height: 100vh;
     background: linear-gradient(180deg, #4f329d 0%, #6840ce 100%);
   }
+
   #sideNav .navbar-brand {
     display: flex;
     margin: auto auto 0;
     padding: 0.5rem;
   }
+
   #sideNav .navbar-brand .img-profile {
     max-width: 10rem;
     max-height: 10rem;
     border: 0.5rem solid rgba(178, 190, 195, 0.1);
   }
+
   #sideNav .navbar-collapse {
     display: flex;
     align-items: flex-start;
@@ -177,53 +194,62 @@ p.lead {
     width: 100%;
     margin-bottom: auto;
   }
+
   #sideNav .navbar-collapse .navbar-nav {
     flex-direction: column;
     width: 100%;
   }
+
   #sideNav .navbar-collapse .navbar-nav .nav-item {
     display: block;
   }
+
   #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
     display: block;
     color: #fff;
   }
 }
 
-/* Section spacing */
+/* Resume Section */
 section.resume-section {
   padding-bottom: 5rem !important;
 }
+
 section.resume-section .resume-item .resume-date {
   min-width: auto;
 }
 
-/* Projects grid */
+/* Project Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 20px;
 }
+
 .project-card {
   border: 1px solid #eee;
   padding: 10px;
   text-align: center;
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
 }
+
 .project-card img {
   margin-top: 2%;
   max-width: 100%;
   height: auto;
 }
 
+/* Responsive Resume Section */
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
   }
+
   section.resume-section .resume-item .resume-date {
     min-width: 18rem;
   }
 }
+
 @media (min-width: 992px) {
   section.resume-section {
     padding-top: 3rem !important;
@@ -231,12 +257,11 @@ section.resume-section .resume-item .resume-date {
   }
 }
 
-/* Primary gradient background */
+/* Primary Background and Text Colors */
 .bg-primary {
   background: linear-gradient(180deg, #8e44ad 0%, #9b59b6 100%);
 }
 
-/* Primary text color */
 .text-primary {
   color: #5b3393 !important;
 }
@@ -245,27 +270,36 @@ section.resume-section .resume-item .resume-date {
 a {
   color: #6b3cac;
 }
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 a:hover,
 a:focus,
 a:active {
   color: #a366f6;
 }
 
-/* Additional weights for certain elements */
+/* Additional Typography Adjustments */
 .navbar-brand,
 .resume-section h2,
 .resume-item h3 {
   font-weight: 900;
 }
+
 p,
 .subheading,
 .resume-content {
   font-weight: 400;
 }
+
 .resume-content h3 {
   font-size: 1.5rem;
   font-weight: 700;
 }
+
 a,
 .social-icons a,
 .resume-date {
