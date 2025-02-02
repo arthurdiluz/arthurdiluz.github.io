@@ -1,3 +1,4 @@
+/* == Fonts == */
 @font-face {
   font-family: "Roboto";
   src: url(../static/fonts/Roboto/Roboto-Regular.ttf) format("truetype");
@@ -68,6 +69,7 @@
   font-style: italic;
 }
 
+/* == Base Styles == */
 body,
 html {
   font-family: "Roboto", sans-serif;
@@ -123,6 +125,7 @@ p.lead {
   font-size: 1.5rem;
 }
 
+/* == Navbar & SideNav == */
 .social-icons a {
   display: inline-block;
   height: 4rem;
@@ -199,6 +202,7 @@ p.lead {
   }
 }
 
+/* == Sections == */
 section.resume-section {
   padding-bottom: 5rem !important;
 }
@@ -207,6 +211,7 @@ section.resume-section .resume-item .resume-date {
   min-width: auto;
 }
 
+/* == Project Grid == */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -243,6 +248,7 @@ section.resume-section .resume-item .resume-date {
   }
 }
 
+/* == Colors & Links == */
 .bg-primary {
   background: linear-gradient(180deg, #8e44ad 0%, #9b59b6 100%);
 }
@@ -287,4 +293,18 @@ a,
 .social-icons a,
 .resume-date {
   font-weight: 500;
+}
+
+/* == Responsive Headings (Added) == */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 2.8rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.6rem;
+  }
 }
