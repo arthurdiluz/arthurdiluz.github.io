@@ -141,6 +141,8 @@
   .service-icon-box {
     margin-bottom: 0;
     margin-top: 5px;
+    justify-content: center;
+    align-items: center;
   }
 
   .service-content-box {
@@ -537,5 +539,16 @@
 
   .timeline-text {
     max-width: 700px;
+  }
+}
+
+/* Mobile: aumentar um pouco o tamanho da fonte e espaçamento */
+@media (max-width: 579px) {
+  .navbar-link {
+    --fs-8: 15px;
+  }
+
+  .navbar-list {
+    gap: 25px;
   }
 }

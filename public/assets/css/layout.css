@@ -91,6 +91,12 @@ main {
   white-space: nowrap;
 }
 
+@media (max-width: 579px) {
+  .info_more-btn .flex {
+    justify-content: center;
+  }
+}
+
 .sidebar-info_more {
   opacity: 0;
   visibility: hidden;
