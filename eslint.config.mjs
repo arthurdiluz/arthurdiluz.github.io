@@ -1,13 +1,13 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
 import promise from "eslint-plugin-promise";
-import unicorn from "eslint-plugin-unicorn";
 import sonarjs from "eslint-plugin-sonarjs";
+import unicorn from "eslint-plugin-unicorn";
 import unusedImports from "eslint-plugin-unused-imports";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -81,21 +81,17 @@ const eslintConfig = [
 
       // Import hygiene
       "import/first": "error",
-      "import/newline-after-import": "error",
+      // Disable stylistic newline enforcement after imports
+      "import/newline-after-import": "off",
       "import/no-duplicates": "error",
-      "import/order": [
-        "error",
-        {
-          groups: [
-            ["builtin", "external"],
-            ["internal"],
-            ["parent", "sibling", "index"],
-            ["type"],
-          ],
-          alphabetize: { order: "asc", caseInsensitive: true },
-          "newlines-between": "always",
-        },
-      ],
+      // Disable import order grouping/newline requirements
+      "import/order": "off",
+
+      // Next.js rules we intentionally relax for this project
+      // We keep a legacy stylesheet link for DEMO parity and will migrate later
+      "@next/next/no-css-tags": "off",
+      // We intentionally allow <img> until we migrate to next/image in a later pass
+      "@next/next/no-img-element": "off",
 
       // Promises
       "promise/always-return": "off",
