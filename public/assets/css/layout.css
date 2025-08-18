@@ -84,6 +84,13 @@ main {
   display: none;
 }
 
+.info_more-btn .flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
 .sidebar-info_more {
   opacity: 0;
   visibility: hidden;

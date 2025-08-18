@@ -86,7 +86,11 @@
 
   .info_more-btn span {
     display: block;
-    font-size: var(--fs-8);
+    font-size: var(--fs-4);
+  }
+
+  .info_more-btn .flex {
+    gap: 16px;
   }
 
   .info_more-btn ion-icon {

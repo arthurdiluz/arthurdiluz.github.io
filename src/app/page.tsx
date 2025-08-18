@@ -70,8 +70,10 @@ export default function Home(): JSX.Element {
               data-sidebar-btn
               onClick={() => setSidebarOpen((v) => !v)}
             >
-              <span>{"Show Contacts"}</span>
-              <CaretDown size={18} weight="bold" />
+              <div className="flex items-center space-x-2">
+                <CaretDown size={20} weight="bold" />
+                <span className="text-xs font-bold">Show Contacts</span>
+              </div>
             </button>
           </div>
           <div className="sidebar-info_more">
