@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/assets/images/logo.ico" sizes="any" />
+        
         <link rel="stylesheet" href="/assets/css/main.css" />
       </head>
       <body className="antialiased font-sans">{children}</body>
