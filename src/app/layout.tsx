@@ -1,7 +1,15 @@
 import "./globals.css";
+import "../styles/main.css";
 
 import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 import type { JSX, ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: "Arthur Diniz",
+  description: "Arthur Diniz's personal website and portfolio",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,10 +25,6 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        
-        <link rel="stylesheet" href="/assets/css/main.css" />
-      </head>
       <body className="antialiased font-sans">{children}</body>
     </html>
   );

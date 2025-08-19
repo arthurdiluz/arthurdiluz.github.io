@@ -552,3 +552,28 @@
     gap: 25px;
   }
 }
+
+/* Mobile: funcionalidade específica para projetos com múltiplas URLs */
+@media (max-width: 579px) {
+  /* Desabilitar hover em mobile */
+  .project-multiple-links:hover .project-multiple-buttons {
+    opacity: 0;
+  }
+
+  /* Melhorar experiência de toque */
+  .project-img {
+    cursor: pointer;
+  }
+
+  /* Garantir que os botões sejam visíveis quando ativos */
+  .project-multiple-buttons.mobile-visible {
+    opacity: 1 !important;
+  }
+
+  /* Ajustar tamanho dos botões para mobile */
+  .project-repo-button {
+    min-width: 160px;
+    padding: 14px 20px;
+    font-size: var(--fs-6);
+  }
+}
