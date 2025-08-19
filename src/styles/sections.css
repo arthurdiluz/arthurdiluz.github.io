@@ -484,12 +484,10 @@
   transition: var(--transition-1);
 }
 
-/* Desktop: hover para mostrar botões */
 .project-multiple-links:hover .project-multiple-buttons {
   opacity: 1;
 }
 
-/* Mobile: classe para mostrar botões ao clicar */
 .project-multiple-buttons.mobile-visible {
   opacity: 1;
 }

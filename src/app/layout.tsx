@@ -1,8 +1,8 @@
-import "./globals.css";
 import "../styles/main.css";
+import "./globals.css";
 
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import type { JSX, ReactNode } from "react";
 
 export const metadata: Metadata = {

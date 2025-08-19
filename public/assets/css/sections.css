@@ -1,0 +1,23 @@
+.project-multiple-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: var(--transition-1);
+}
+
+.project-multiple-links:hover .project-multiple-buttons {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-multiple-buttons.mobile-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

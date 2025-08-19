@@ -1,5 +1,4 @@
 :root {
-  /* Background Gradients */
   --bg-gradient-onyx: linear-gradient(to bottom right, #404040 3%, #303030 97%);
   --bg-gradient-jet: linear-gradient(
       to bottom right,
@@ -19,17 +18,14 @@
     ),
     #212121;
 
-  /* Border Gradients */
   --border-gradient-onyx: linear-gradient(
     to bottom right,
     #404040 0%,
     rgba(64, 64, 64, 0) 50%
   );
 
-  /* Text Gradients */
   --text-gradient-highlight: linear-gradient(to right, #2ecc71, #25a35a);
 
-  /* Base Colors - Now using Tailwind color system */
   --jet: #383838;
   --onyx: #2b2b2b;
   --eerie-black-1: #212121;
@@ -43,10 +39,8 @@
   --light-gray-70: rgba(214, 214, 214, 0.7);
   --bittersweet-shimmer: #d63384;
 
-  /* Typography */
   --ff-poppins: "Poppins", sans-serif;
 
-  /* Font Sizes */
   --fs-1: 24px;
   --fs-2: 18px;
   --fs-3: 17px;
@@ -56,20 +50,17 @@
   --fs-7: 13px;
   --fs-8: 11px;
 
-  /* Font Weights */
   --fw-300: 300;
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
 
-  /* Shadows - Using Tailwind color system */
   --shadow-1: -4px 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-2: 0 16px 30px rgba(0, 0, 0, 0.25);
   --shadow-3: 0 16px 40px rgba(0, 0, 0, 0.25);
   --shadow-4: 0 25px 50px rgba(0, 0, 0, 0.15);
   --shadow-5: 0 24px 80px rgba(0, 0, 0, 0.25);
 
-  /* Transitions */
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
 }
