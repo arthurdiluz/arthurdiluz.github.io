@@ -20,7 +20,7 @@ export const Sidebar = ({
         alt={personalInfo.name}
         size={80}
       />
-      <InfoContent name={personalInfo.name} title={personalInfo.title} />
+      <InfoContent name={personalInfo.name} />
       <ShowContactsButton _isOpen={isOpen} onClick={onToggle} />
     </div>
     <div className="sidebar-info_more">

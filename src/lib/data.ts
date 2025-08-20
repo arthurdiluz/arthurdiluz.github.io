@@ -10,7 +10,6 @@ import type {
 
 export const personalInfo: PersonalInfo = {
   name: "Arthur Diniz",
-  title: "Full-Stack Developer",
   avatarPath: "/assets/images/pp.webp",
   email: "arthurdiluz@outlook.com",
   phone: "+55 (43) 9 9804-8845",

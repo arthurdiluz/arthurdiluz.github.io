@@ -56,7 +56,6 @@ export interface SkillItem {
 
 export interface PersonalInfo {
   name: string;
-  title: string;
   avatarPath: string;
   email: string;
   phone: string;
@@ -139,7 +138,6 @@ export interface AvatarBoxProps {
 
 export interface InfoContentProps {
   name: string;
-  title: string;
 }
 
 export interface ShowContactsButtonProps {
