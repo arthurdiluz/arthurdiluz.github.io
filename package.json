@@ -13,28 +13,28 @@
     "check": "yarn typecheck && yarn lint:strict"
   },
   "dependencies": {
-    "@phosphor-icons/react": "^2.1.10",
+    "@phosphor-icons/react": "2.1.10",
     "next": "15.5.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "schema-dts": "^1.1.5"
+    "schema-dts": "1.1.5"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@types/node": "^24.2.1",
-    "@types/react": "^19.1.11",
-    "@types/react-dom": "^19",
-    "@typescript-eslint/eslint-plugin": "^8.40.0",
-    "@typescript-eslint/parser": "^8.40.0",
-    "eslint": "^9.34.0",
+    "@eslint/eslintrc": "3",
+    "@tailwindcss/postcss": "4.1.12",
+    "@types/node": "24.3.0",
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19",
+    "@typescript-eslint/eslint-plugin": "8.41.0",
+    "@typescript-eslint/parser": "8.41.0",
+    "eslint": "9.34.0",
     "eslint-config-next": "15.5.0",
-    "eslint-plugin-import": "^2",
-    "eslint-plugin-promise": "^7.2.1",
-    "eslint-plugin-sonarjs": "^3.0.4",
-    "eslint-plugin-unicorn": "^60.0.0",
-    "eslint-plugin-unused-imports": "^4.2.0",
-    "tailwindcss": "^4.1.12",
-    "typescript": "^5"
+    "eslint-plugin-import": "2",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unicorn": "60.0.0",
+    "eslint-plugin-unused-imports": "4.2.0",
+    "tailwindcss": "4.1.12",
+    "typescript": "5"
   }
 }
