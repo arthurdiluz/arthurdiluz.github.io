@@ -2,6 +2,7 @@
 
 import type { ProjectItem } from "@/lib/types";
 import { GithubLogo } from "@phosphor-icons/react";
+import Image from "next/image";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { ProjectCategories } from "./project-categories";
 import { ProjectTitle } from "./project-title";
@@ -93,7 +94,13 @@ export const ProjectWithMultipleLinks = React.memo<Props>(
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img src={project.imagePath} alt={project.title} loading="lazy" />
+          <Image
+            src={project.imagePath}
+            alt={`Screenshot of ${project.title} project`}
+            width={400}
+            height={300}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
           <div
             className={`${CSS_CLASSES.projectMultipleButtons} ${buttonVisibilityClass}`}
             style={pointerEventsStyle}

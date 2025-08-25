@@ -1,15 +1,16 @@
 import type {
   BlogPostItem,
+  CompanyInfo,
+  FAQItem,
   PersonalInfo,
   ProjectItem,
   ServiceItem,
   SocialLink,
-  TestimonialItem,
   TimelineEntry,
 } from "./types";
 
 export const personalInfo: PersonalInfo = {
-  name: "Arthur Diniz",
+  name: "Arthur Diniz da Luz",
   avatarPath: "/assets/images/pp.webp",
   email: "arthurdiluz@outlook.com",
   phone: "+55 (43) 9 9804-8845",
@@ -79,26 +80,79 @@ export const services: ServiceItem[] = [
   },
 ];
 
-export const testimonials: TestimonialItem[] = [
+export const faqs: FAQItem[] = [
+  //? --- General ---
   {
-    name: "Daniel lewis",
-    avatarPath: "/assets/images/avatar-1.png",
-    text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+    question: "Who is Arthur Diniz da Luz?",
+    answer:
+      "Arthur Diniz da Luz is a Full-Stack Software Developer with a Bachelor's in Computer Science and over four years of experience building effective, scalable software solutions for complex business challenges. His career evolved from corporate roles to entrepreneurship, culminating in the co-founding of iOHub Digital, a tech company specializing in SaaS products for the Brazilian market.",
+    category: "general",
   },
   {
-    name: "Jessica miller",
-    avatarPath: "/assets/images/avatar-2.png",
-    text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+    question: "What is Arthur's primary area of expertise?",
+    answer:
+      "Arthur's primary expertise is full-stack development, with a strong focus on backend systems using Node.js (NestJS, Express.js) and modern frontend frameworks like React.js and Next.js. He has significant experience building AI-powered SaaS platforms, designing scalable cloud architectures on AWS, and leading software projects from concept to launch.",
+    category: "general",
   },
   {
-    name: "Emily evans",
-    avatarPath: "/assets/images/avatar-3.png",
-    text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+    question: "What kind of professional opportunity is Arthur looking for?",
+    answer:
+      "Arthur is seeking a new opportunity as a Software Developer to apply his experience in product development, AI implementation, and technical leadership. He is particularly interested in challenging projects that involve building innovative SaaS solutions and solving real-world problems with technology.",
+    category: "general",
+  },
+  //? --- Technical & AI ---
+  {
+    question: "What specific AI technologies does Arthur have experience with?",
+    answer:
+      "Arthur has hands-on experience developing and implementing AI solutions, specializing in Retrieval-Augmented Generation (RAG) architectures. He has built systems using ChromaDB for vector storage, Google Gemini for generating embeddings, and created conversational AI agents capable of performing semantic searches to answer complex user queries.",
+    category: "technical",
   },
   {
-    name: "Henry william",
-    avatarPath: "/assets/images/avatar-4.png",
-    text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+    question:
+      "Which programming languages and backend technologies is Arthur proficient in?",
+    answer:
+      "Arthur is proficient in TypeScript, JavaScript (ES6+), Python, and Golang. His primary backend stack includes Node.js and its frameworks like NestJS, Express.js, and Fastify. He is skilled in building robust RESTful APIs, real-time applications with WebSockets, and working with gRPC.",
+    category: "technical",
+  },
+  {
+    question:
+      "What are Arthur's skills in frontend, mobile, and database technologies?",
+    answer:
+      "On the frontend, Arthur specializes in React.js and Next.js. For mobile development, he has experience with React Native. His database expertise covers both SQL (PostgreSQL, MySQL) and NoSQL (MongoDB, Firebase, Supabase) databases, along with caching solutions like Redis.",
+    category: "technical",
+  },
+  {
+    question: "What is Arthur's experience with Cloud & DevOps?",
+    answer:
+      "Arthur is experienced in deploying and managing applications on cloud platforms, primarily AWS (EC2, S3, Lambda, RDS, ECS) and GCP. He is proficient with DevOps practices, including containerization with Docker, orchestration with Kubernetes, and setting up CI/CD pipelines using GitHub Actions and AWS CodePipeline.",
+    category: "technical",
+  },
+  //? --- Experience & Projects ---
+  {
+    question: "What is iOHub Digital and what is Arthur's role?",
+    answer:
+      "iOHub Digital is a technology consulting and software development company co-founded by Arthur. As a Co-Founder and Software Engineer, he spearheads custom software development, provides technical consulting, and coordinates development teams. The company initially focused on the international market via UpWork before transitioning to develop its own SaaS products.",
+    category: "experience",
+  },
+  {
+    question: "What is Bonchef, and how was it developed?",
+    answer:
+      "Bonchef is an AI-powered SaaS platform for restaurant management and iOHub Digital's flagship product. Arthur led its full-stack development, creating the backend API with NestJS and Prisma, a PWA control panel with Next.js, and a desktop app with Electron. The platform features a POS system, digital menu, real-time order synchronization via WebSockets, and an AI conversational agent.",
+    category: "experience",
+  },
+  {
+    question:
+      "Can you describe a specific technical challenge Arthur solved on a project?",
+    answer:
+      "For the Bonchef project, Arthur designed and implemented a conversational AI agent from the ground up. The solution involved creating a Retrieval-Augmented Generation (RAG) pipeline, using a ChromaDB vector database to store restaurant data, and leveraging Google Gemini embeddings for semantic search. This system enables the chatbot to accurately answer complex, real-time customer questions about menus and services.",
+    category: "experience",
+  },
+  {
+    question:
+      "What other notable projects has Arthur worked on as a Software Engineer?",
+    answer:
+      "Prior to iOHub, Arthur's notable projects include 'Certify MyRent,' a multi-tenant real estate management platform on AWS; 'Construction Help Finder,' a mobile app for which he integrated in-app payments with RevenueCat; and 'Madalu,' a beauty service scheduling system where he architected the backend foundation using NestJS and PostgreSQL.",
+    category: "experience",
   },
 ];
 
@@ -243,3 +297,48 @@ export const experience: TimelineEntry[] = [
     text: "Started career with intensive training and client project work, consolidating software engineering fundamentals, version control, and best practices.\n\nCompleted modern web development and Object-Oriented Programming with Java tracks, in addition to enhancing JavaScript fundamentals; created REST APIs with Spring Boot following layer patterns, DTOs, and validations.\n\nAs a Trainee, worked in technical consulting for Roche, using OutSystems (low-code) to model processes, automate workflows, and deliver business solutions.",
   },
 ];
+
+// SEO and Professional Information
+export const professionalInfo: {
+  jobTitle: string;
+  skills: string[];
+  keywords: string[];
+} = {
+  jobTitle: "Software Engineer and Founder",
+  skills: [
+    "Software Engineering",
+    "Full-Stack Development",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "TypeScript",
+    "AI Development",
+    "Machine Learning",
+    "Cloud Computing",
+    "DevOps",
+  ],
+  keywords: [
+    "Arthur Diniz da Luz",
+    "Software Engineer",
+    "CEO",
+    "iohub",
+    "Founder",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "AI Development",
+    "Full Stack Developer",
+    "Web Development",
+  ],
+};
+
+export const companyInfo: CompanyInfo = {
+  name: "iOHub Digital",
+  url: "https://www.iohub.digital",
+  linkedin: "https://www.linkedin.com/company/iohub-digital",
+  github: "https://github.com/iohub-digital",
+  foundingDate: "2023",
+  description:
+    "Technology consulting and software development company specializing in AI-powered solutions, SaaS platforms, and digital transformation.",
+};

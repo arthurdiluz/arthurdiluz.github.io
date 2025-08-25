@@ -1,13 +1,13 @@
 "use client";
 
-import { personalInfo } from "@/lib/data";
+import { personalInfo } from "@/lib/content-data";
 import type { SidebarProps } from "@/lib/types";
 import React from "react";
 import { AvatarBox } from "./avatar-box";
 import { ContactsList } from "./contacts-list";
-import { InfoContent } from "./info-content";
 import { ShowContactsButton } from "./show-contacts-button";
 import { SocialList } from "./social-list";
+import { UserNameDisplay } from "./user-name-display";
 
 export const Sidebar = ({
   isOpen,
@@ -20,7 +20,7 @@ export const Sidebar = ({
         alt={personalInfo.name}
         size={80}
       />
-      <InfoContent name={personalInfo.name} />
+      <UserNameDisplay name={personalInfo.name} />
       <ShowContactsButton _isOpen={isOpen} onClick={onToggle} />
     </div>
     <div className="sidebar-info_more">

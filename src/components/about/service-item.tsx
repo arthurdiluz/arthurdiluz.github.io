@@ -2,7 +2,7 @@
 
 import type { ServiceItem as ServiceItemType } from "@/lib/types";
 import { IconContext } from "@phosphor-icons/react";
-import React from "react";
+import type { JSX } from "react";
 import { ServiceIcon } from "./service-icon";
 
 interface ServiceItemProps {
@@ -15,8 +15,8 @@ const ICON_CONTEXT_VALUE = Object.freeze({
   mirrored: false,
 } as const);
 
-export const ServiceItem = React.memo<ServiceItemProps>(
-  ({ service }: ServiceItemProps): React.JSX.Element => (
+export function ServiceItem({ service }: ServiceItemProps): JSX.Element {
+  return (
     <li className="service-item">
       <div className="service-icon-box">
         <IconContext.Provider value={ICON_CONTEXT_VALUE}>
@@ -28,7 +28,5 @@ export const ServiceItem = React.memo<ServiceItemProps>(
         <p className="service-item-text">{service.text}</p>
       </div>
     </li>
-  )
-);
-
-ServiceItem.displayName = "ServiceItem";
+  );
+}

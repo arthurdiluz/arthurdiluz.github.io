@@ -14,7 +14,7 @@ const ICON_CONTEXT_VALUE = Object.freeze({
   mirrored: false,
 } as const);
 
-export const IconProvider = React.memo<Props>(
+export const PhosphorIconProvider = React.memo<Props>(
   ({ children }: Props): React.JSX.Element => (
     <IconContext.Provider value={ICON_CONTEXT_VALUE}>
       {children}
@@ -22,4 +22,4 @@ export const IconProvider = React.memo<Props>(
   )
 );
 
-IconProvider.displayName = "IconProvider";
+PhosphorIconProvider.displayName = "PhosphorIconProvider";

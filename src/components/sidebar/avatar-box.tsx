@@ -1,19 +1,25 @@
 "use client";
 
-import React from "react";
+import type { AvatarBoxProps } from "@/lib/types";
+import Image from "next/image";
+import type { JSX } from "react";
 
-interface Props {
-  src: string;
-  alt: string;
-  size?: number;
-}
-
-export const AvatarBox = ({
+export function AvatarBox({
   src,
   alt,
   size = 80,
-}: Props): React.JSX.Element => (
-  <figure className="avatar-box">
-    <img src={src} alt={alt} width={size} className="rounded-2xl" />
-  </figure>
-);
+}: AvatarBoxProps): JSX.Element {
+  return (
+    <figure className="avatar-box">
+      <Image
+        src={src}
+        alt={alt}
+        width={size}
+        height={size}
+        priority
+        sizes={`${size}px`}
+        className="rounded-2xl"
+      />
+    </figure>
+  );
+}

@@ -1,2 +1,2 @@
-export { IconProvider } from "./icon-provider";
-export { PageWrapper } from "./page-wrapper";
+export { MainContentWrapper } from "./main-content-wrapper";
+export { PhosphorIconProvider } from "./phosphor-icon-provider";

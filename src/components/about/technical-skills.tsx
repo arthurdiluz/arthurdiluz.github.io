@@ -1,11 +1,9 @@
-"use client";
-
-import { services } from "@/lib/data";
-import React from "react";
+import { services } from "@/lib/content-data";
+import type { JSX } from "react";
 import { ServiceItem } from "./service-item";
 
-export const TechnicalSkills = React.memo(
-  (): React.JSX.Element => (
+export function TechnicalSkills(): JSX.Element {
+  return (
     <section className="service">
       <h3 className="h3 service-title">{"Technical Skills"}</h3>
       <ul className="service-list">
@@ -14,7 +12,5 @@ export const TechnicalSkills = React.memo(
         ))}
       </ul>
     </section>
-  )
-);
-
-TechnicalSkills.displayName = "TechnicalSkills";
+  );
+}

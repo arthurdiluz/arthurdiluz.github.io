@@ -1,6 +1,6 @@
 "use client";
 
-import { socialLinks } from "@/lib/data";
+import { socialLinks } from "@/lib/content-data";
 import type { SocialLink } from "@/lib/types";
 import React from "react";
 import { SocialItem } from "./social-item";

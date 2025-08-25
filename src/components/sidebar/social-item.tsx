@@ -1,6 +1,6 @@
 "use client";
 
-import type { SocialLink } from "@/lib/types";
+import type { SocialItemProps } from "@/lib/types";
 import {
   GithubLogo,
   InstagramLogo,
@@ -9,10 +9,6 @@ import {
   WhatsappLogo,
 } from "@phosphor-icons/react";
 import React, { memo } from "react";
-
-interface Props {
-  social: SocialLink;
-}
 
 const SOCIAL_ICON_MAP = new Map([
   ["linkedin", LinkedinLogo],
@@ -34,20 +30,22 @@ const getSocialIcon = (name: string): React.JSX.Element => {
   );
 };
 
-export const SocialItem = memo(({ social }: Props): React.JSX.Element => {
-  return (
-    <li className="social-item">
-      <a
-        href={social.url}
-        className="social-link"
-        aria-label={social.label}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {getSocialIcon(social.name)}
-      </a>
-    </li>
-  );
-});
+export const SocialItem = memo(
+  ({ social }: SocialItemProps): React.JSX.Element => {
+    return (
+      <li className="social-item">
+        <a
+          href={social.url}
+          className="social-link"
+          aria-label={social.label}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {getSocialIcon(social.name)}
+        </a>
+      </li>
+    );
+  }
+);
 
 SocialItem.displayName = "SocialItem";

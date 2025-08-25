@@ -12,28 +12,27 @@ export interface TestimonialItem {
   text: string;
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+  category?: string;
+}
 interface BaseProjectItem {
   title: string;
   categories: string[];
   imagePath: string;
   description: string;
 }
-
 interface SingleUrlProject extends BaseProjectItem {
   url: string;
   urls?: never;
 }
-
 interface MultipleUrlsProject extends BaseProjectItem {
   url?: never;
-  urls: {
-    label: string;
-    url: string;
-  }[];
+  urls: { label: string; url: string }[];
 }
 
 export type ProjectItem = SingleUrlProject | MultipleUrlsProject;
-
 export interface BlogPostItem {
   title: string;
   imagePath: string;
@@ -71,7 +70,6 @@ export interface SocialLink {
 }
 
 export type PageKey = "about" | "resume" | "portfolio";
-
 export interface HomePageProps {
   _placeholder?: never;
 }
@@ -136,7 +134,7 @@ export interface AvatarBoxProps {
   size?: number;
 }
 
-export interface InfoContentProps {
+export interface UserNameDisplayProps {
   name: string;
 }
 
@@ -172,4 +170,40 @@ export interface TimelineIconProps {
   type: "experience" | "education";
   size?: number;
   weight?: "fill" | "regular" | "bold";
+}
+
+export interface PerformanceSettings {
+  dnsPrefetch: string;
+  preconnect: string;
+  fontPreload: string;
+}
+
+export interface CompanyInfo {
+  name: string;
+  url: string;
+  linkedin: string;
+  github: string;
+  foundingDate: string;
+  description: string;
+}
+
+export interface SEOData {
+  name: string;
+  jobTitle: string;
+  email: string;
+  phone: string;
+  birthDate: string;
+  location: string;
+  siteUrl: string;
+  profileImage: string;
+  fullProfileImageUrl: string;
+  logoUrl: string;
+  company: CompanyInfo;
+  skills: string[];
+  keywords: string[];
+  socialLinks: string[];
+  description: string;
+  shortDescription: string;
+  featuredProjects: ProjectItem[];
+  performance: PerformanceSettings;
 }

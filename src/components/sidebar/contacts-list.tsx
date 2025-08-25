@@ -1,6 +1,6 @@
 "use client";
 
-import { personalInfo } from "@/lib/data";
+import { personalInfo } from "@/lib/content-data";
 import { Calendar, Envelope, MapPin, Phone } from "@phosphor-icons/react";
 import React from "react";
 import { ContactItem } from "./contact-item";

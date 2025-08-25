@@ -1,13 +1,11 @@
-"use client";
-
-import { projects } from "@/lib/data";
-import React from "react";
+import { projects } from "@/lib/content-data";
+import type { JSX } from "react";
 import { ProjectItem } from "./project-item";
 
-export const PortfolioSection = React.memo(
-  (): React.JSX.Element => (
+export function PortfolioSection(): JSX.Element {
+  return (
     <>
-      <h2 className="h2 article-title">Portfolio</h2>
+      <h2 className="h2 article-title">{"Portfolio"}</h2>
       <section className="projects">
         <ul className="project-list">
           {projects.map((project) => (
@@ -16,7 +14,5 @@ export const PortfolioSection = React.memo(
         </ul>
       </section>
     </>
-  )
-);
-
-PortfolioSection.displayName = "PortfolioSection";
+  );
+}

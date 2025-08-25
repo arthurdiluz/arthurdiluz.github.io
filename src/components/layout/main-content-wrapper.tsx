@@ -7,8 +7,8 @@ interface Props {
   children: ReactNode;
 }
 
-export const PageWrapper = React.memo<Props>(
+export const MainContentWrapper = React.memo<Props>(
   ({ children }: Props): React.JSX.Element => <main>{children}</main>
 );
 
-PageWrapper.displayName = "PageWrapper";
+MainContentWrapper.displayName = "MainContentWrapper";

@@ -1,15 +1,13 @@
 import "../styles/main.css";
 import "./globals.css";
 
-import type { Metadata } from "next";
+import { metadata } from "@/lib";
+import { generateStructuredData } from "@/lib/schemas/structured-data";
 import { Inter } from "next/font/google";
 import type { JSX, ReactNode } from "react";
+import type { Thing, WithContext } from "schema-dts";
 
-export const metadata: Metadata = {
-  title: "Arthur Diniz",
-  description: "Arthur Diniz's personal website and portfolio",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+export { metadata };
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,8 +21,19 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>): JSX.Element {
+  const schemas: WithContext<Thing>[] = generateStructuredData();
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        {schemas.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
+      </head>
       <body className="antialiased font-sans">{children}</body>
     </html>
   );

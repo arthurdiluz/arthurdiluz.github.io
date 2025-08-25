@@ -1,7 +1,5 @@
-"use client";
-
-import { education, experience } from "@/lib/data";
-import React from "react";
+import { education, experience } from "@/lib/content-data";
+import type { JSX } from "react";
 import { TimelineSection } from "./timeline-section";
 
 const RESUME_SECTIONS = Object.freeze({
@@ -20,8 +18,8 @@ const RESUME_SECTIONS = Object.freeze({
 type ResumeSectionConfig =
   (typeof RESUME_SECTIONS)[keyof typeof RESUME_SECTIONS];
 
-export const ResumeSection = React.memo(
-  (): React.JSX.Element => (
+export function ResumeSection(): JSX.Element {
+  return (
     <>
       <h2 className="h2 article-title">Resume</h2>
       {Object.values(RESUME_SECTIONS).map((section: ResumeSectionConfig) => (
@@ -33,7 +31,5 @@ export const ResumeSection = React.memo(
         />
       ))}
     </>
-  )
-);
-
-ResumeSection.displayName = "ResumeSection";
+  );
+}
