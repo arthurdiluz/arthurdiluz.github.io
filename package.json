@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "clean": "rm -rf .next out && yarn cache clean",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
     "lint": "next lint",
