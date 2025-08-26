@@ -1,4 +1,5 @@
 import type {
+  FAQPage,
   ImageObject,
   Organization,
   Person,
@@ -6,6 +7,7 @@ import type {
   Thing,
   WithContext,
 } from "schema-dts";
+import { faqs } from "../content-data";
 import { seoData } from "../seo-data";
 
 export function generateStructuredData(): WithContext<Thing>[] {
@@ -100,6 +102,20 @@ export function generateStructuredData(): WithContext<Thing>[] {
     creator: { "@type": "Person", name: seoData.name },
   };
   schemas.push(imageSchema);
+
+  const faqSchema: WithContext<FAQPage> = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+  schemas.push(faqSchema);
 
   return schemas;
 }
