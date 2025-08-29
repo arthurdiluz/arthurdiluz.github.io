@@ -1,0 +1,122 @@
+# Arthur Diniz da Luz - Portfolio
+
+> Personal portfolio website of Arthur Diniz da Luz, a Full-Stack Software Developer and Co-Founder of iOHub Digital. Specializing in AI-powered solutions, React, Next.js, Node.js, TypeScript, and modern web technologies.
+
+## About
+
+Arthur Diniz da Luz is a Full-Stack Software Developer with a Bachelor's in Computer Science and over four years of experience building effective, scalable software solutions. He is the Co-Founder of iOHub Digital, a tech company specializing in SaaS products for the Brazilian market.
+
+**Key Expertise:**
+
+- Full-Stack Development (React.js, Next.js, Node.js, NestJS)
+- AI Implementation (RAG Architecture, ChromaDB, Google Gemini)
+- Cloud & DevOps (AWS, Docker, Kubernetes, CI/CD)
+- Database Management (PostgreSQL, MongoDB, Redis)
+- Mobile Development (React Native)
+
+## Core Content
+
+### Professional Overview
+
+- [Home](https://arthurdiluz.github.io/): Main portfolio landing page showcasing Arthur's professional background, skills, and featured projects
+- [About Section](https://arthurdiluz.github.io/#about): Detailed information about Arthur's background, education, and professional journey
+- [Technical Skills](https://arthurdiluz.github.io/#skills): Comprehensive list of programming languages, frameworks, and technologies
+- [Resume/CV](https://arthurdiluz.github.io/assets/pdf/resume_arthur-diniz-da-luz.pdf): Professional resume in PDF format
+
+### Projects & Portfolio
+
+- [Portfolio Section](https://arthurdiluz.github.io/#portfolio): Showcase of key projects and development work
+- [Bonchef](https://app.bonchef.com.br/lp2?utm_source=diniz_portfolio): AI-powered SaaS platform for restaurant management with real-time synchronization
+- [TourLibras](https://github.com/arthurdiluz/tourlibras-api): Application teaching Brazilian Sign Language through interactive lessons
+- [BeTheHero](https://github.com/arthurdiluz/be-the-hero): NGO support platform connecting donors with charitable causes
+- [2048 Game](https://github.com/arthurdiluz/the-2048): Desktop implementation of the popular 2048 puzzle game
+
+### Professional Experience
+
+- [Experience Timeline](https://arthurdiluz.github.io/#experience): Career progression from intern to co-founder
+- [iOHub Digital](https://www.iohub.digital): Technology consulting company co-founded by Arthur
+- [LinkedIn Profile](https://www.linkedin.com/in/arthurdiluz/): Professional network and career details
+- [GitHub Profile](https://github.com/arthurdiluz): Open source contributions and code repositories
+
+## Services & Expertise
+
+### Development Services
+
+- Programming Languages: JavaScript (ES6+), TypeScript, Python, Golang
+- Backend Development: Node.js, NestJS, Express.js, Fastify, Buffalo
+- Frontend & Mobile: React.js, Next.js, React Native
+- AI & Data: ChromaDB, RAG Architecture, Embeddings
+- Database & Cache: PostgreSQL, MongoDB, MySQL, Redis, Firebase, Supabase
+- Cloud & DevOps: AWS (EC2, S3, Lambda, RDS, ECS), Docker, Kubernetes, CI/CD
+
+### Key Technologies
+
+- **Frontend**: React.js, Next.js, React Native, TypeScript
+- **Backend**: Node.js, NestJS, Express.js, Python, Golang
+- **AI/ML**: RAG Architecture, ChromaDB, Google Gemini, Embeddings
+- **Database**: PostgreSQL, MongoDB, Redis, Firebase, Supabase
+- **Cloud**: AWS (EC2, S3, Lambda, RDS, ECS), GCP, Docker, Kubernetes
+- **DevOps**: GitHub Actions, AWS CodePipeline, CI/CD
+
+## Contact & Social
+
+### Professional Contact
+
+- [Email](mailto:arthurdiluz@outlook.com): Primary contact for professional inquiries
+- [Phone/WhatsApp](https://wa.me/5543998048845): Direct messaging and calls
+- [Telegram](https://t.me/arthurdiluz): Alternative messaging platform
+
+### Social Media
+
+- [LinkedIn](https://www.linkedin.com/in/arthurdiluz/): Professional networking and career updates
+- [GitHub](https://github.com/arthurdiluz): Code repositories and technical contributions
+- [Instagram](https://www.instagram.com/arthurdiluz/): Personal and professional content
+
+## Professional Background
+
+### Education
+
+- Bachelor's Degree in Computer Science (Universidade Estadual do Norte do Paraná - UENP, 2017-2023)
+- English Proficiency Certification (Wizard Language School, 2010-2016)
+
+### Career Highlights
+
+- **Co-Founder & Software Engineer at iOHub Digital** (2023-Present): Leading development of AI-powered SaaS solutions
+- **Software Engineer at Superior Digital** (2023-2024): Full-stack development of property management and e-commerce platforms
+- **Software Engineer at Kodde** (2022-2023): Backend development and system architecture
+- **Intern at Tata Consultancy Services** (2021-2022): Technical consulting and software development training
+
+### Key Projects
+
+- **Bonchef**: AI-powered restaurant management SaaS with conversational AI, real-time synchronization, and POS integration
+- **CertifyMyRent**: Multi-tenant property management platform with Stripe integration
+- **Construction Help Finder**: Mobile app connecting construction workers with project managers
+- **Madalu**: Beauty service scheduling system with NestJS backend
+
+## Technical Specializations
+
+### AI & Machine Learning
+
+- Retrieval-Augmented Generation (RAG) architectures
+- Vector databases (ChromaDB)
+- Semantic search and embeddings
+- Conversational AI agents
+- Google Gemini integration
+
+### Full-Stack Development
+
+- Modern JavaScript/TypeScript ecosystems
+- React ecosystem (React.js, Next.js, React Native)
+- Node.js frameworks (NestJS, Express.js, Fastify)
+- RESTful API design and GraphQL
+- Real-time applications with WebSockets
+
+### Cloud & Infrastructure
+
+- AWS services (EC2, S3, Lambda, RDS, ECS)
+- Containerization (Docker, Kubernetes)
+- CI/CD pipelines (GitHub Actions, AWS CodePipeline)
+- Infrastructure as Code
+- Scalable architecture design
+
+This portfolio represents Arthur's expertise in modern software development, with a focus on AI-powered solutions, full-stack web development, and scalable SaaS platforms. The site showcases both individual technical skills and entrepreneurial experience through iOHub Digital.
