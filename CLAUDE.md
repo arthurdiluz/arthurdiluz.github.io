@@ -2,6 +2,45 @@
 
 This file provides guidance to Claude Code (`claude.ai/code`) when working with code in this repository.
 
+## Quick Start Guide
+
+### First-Time Setup
+
+1. **Clone and Navigate**
+
+   ```bash
+   git clone https://github.com/arthurdiluz/arthurdiluz.github.io.git
+   cd arthurdiluz.github.io
+   ```
+
+2. **Environment Setup**
+
+   ```bash
+   # Use Node.js 20 LTS (recommended: use nvm)
+   nvm use 20
+   
+   # Install dependencies with frozen lockfile
+   yarn install --frozen-lockfile
+   ```
+
+3. **Development Workflow**
+
+   ```bash
+   # Run quality checks before starting
+   yarn check
+   
+   # Start development server
+   yarn dev
+   
+   # Build for production (GitHub Pages)
+   yarn build
+   ```
+
+4. **Verify Setup**
+   - Development server: <http://localhost:3000>
+   - Static build output: `./out` directory
+   - All TypeScript and ESLint checks pass
+
 ## Development Commands
 
 ### Core Development
@@ -260,3 +299,160 @@ src/components/
   - Layout and responsive utilities
   - Animation and transition definitions
 - **Design Principles**: Mobile-first responsive design with consistent spacing and typography scales
+
+## Component Development Guidelines
+
+### Creating New Components
+
+1. **File Structure**
+
+   ```bash
+   src/components/[feature]/
+   ├── component-name.tsx    # Main component
+   ├── index.ts             # Barrel export
+   └── [other-parts].tsx    # Additional related components
+   ```
+
+2. **Component Template**
+
+   ```typescript
+   import type { ComponentNameProps } from "@/lib/types";
+   import React from "react";
+   
+   export const ComponentName = ({
+     prop1,
+     prop2,
+   }: ComponentNameProps): React.JSX.Element => (
+     <div className="component-name">
+       {/* Component content */}
+     </div>
+   );
+   ```
+
+3. **Type Definition Pattern**
+
+   ```typescript
+   // In src/lib/types.ts
+   export interface ComponentNameProps {
+     prop1: string;
+     prop2: number;
+     optionalProp?: boolean;
+   }
+   ```
+
+### Component Conventions
+
+- **Naming**: PascalCase for components, kebab-case for CSS classes
+- **Exports**: Named exports preferred (not default exports)
+- **Props**: Destructured in function signature with explicit typing
+- **Return Type**: Always annotate with `React.JSX.Element`
+- **Client Components**: Add `"use client"` directive when using React hooks
+
+## Testing Strategy
+
+### Current Status
+
+- **No test framework configured** - This is a static portfolio site
+- **Quality Assurance**: Relies on TypeScript strict mode and ESLint
+- **Validation**: Build-time checks prevent deployment of broken code
+
+### Testing Approach (If Needed)
+
+```bash
+# Recommended test setup for future expansion
+yarn add -D @testing-library/react @testing-library/jest-dom vitest
+```
+
+### Manual Testing Checklist
+
+- [ ] Development server starts without errors
+- [ ] Build completes successfully (`yarn build`)
+- [ ] All pages render correctly
+- [ ] Responsive design works on mobile/desktop
+- [ ] All external links function properly
+
+## Error Handling & Debugging
+
+### Common Build Issues
+
+1. **TypeScript Errors**
+
+   ```bash
+   # Check specific errors
+   yarn typecheck
+   
+   # Fix common issues
+   - Ensure all props have proper type definitions
+   - Check for missing imports or exports
+   - Verify path mappings (@/* imports)
+   ```
+
+2. **ESLint Warnings/Errors**
+
+   ```bash
+   # Run strict linting
+   yarn lint:strict
+   
+   # Common fixes
+   - Remove unused imports (auto-fixed)
+   - Add type annotations where required
+   - Follow naming conventions (kebab-case files)
+   ```
+
+3. **Static Export Issues**
+
+   ```bash
+   # Verify static export compatibility
+   - No server-side features (SSR, API routes)
+   - All images use unoptimized: true
+   - No dynamic routing with params
+   ```
+
+### Debugging Tools
+
+1. **Development Console**
+   - Browser DevTools for runtime issues
+   - React Developer Tools extension
+   - Network tab for asset loading issues
+
+2. **Build Analysis**
+
+   ```bash
+   # Check build output
+   yarn build && ls -la out/
+   
+   # Verify static files generated correctly
+   npx serve out
+   ```
+
+### Performance Debugging
+
+- **Bundle Analysis**: Check .next/static/ for chunk sizes
+- **Image Optimization**: Ensure all images in public/assets/ are web-optimized
+- **Lighthouse**: Test Core Web Vitals in production build
+
+## Common Issues & Solutions
+
+### Issue: "Module not found" errors
+
+**Solution**: Check tsconfig.json path mappings and ensure imports use `@/` prefix
+
+### Issue: Build fails with TypeScript errors
+
+**Solution**: Run `yarn typecheck` to see specific errors, ensure all types are properly defined
+
+### Issue: Static export missing pages
+
+**Solution**: Verify next.config.ts has `output: "export"` and no server-side features
+
+### Issue: GitHub Pages deployment fails
+
+**Solution**: Check that build produces `./out` directory with `.nojekyll` file
+
+### Issue: Styling not applied correctly
+
+**Solution**: Ensure Tailwind classes are used correctly and CSS modules are imported properly
+
+### Issue: Icons not rendering
+
+**Solution**: Verify PhosphorIconProvider wraps the app and icon imports are correct
