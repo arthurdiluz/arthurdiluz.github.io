@@ -18,7 +18,8 @@
     "next": "15.5.2",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "schema-dts": "1.1.5"
+    "schema-dts": "1.1.5",
+    "web-vitals": "5.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3",
@@ -32,10 +33,10 @@
     "eslint-config-next": "15.5.2",
     "eslint-plugin-import": "2",
     "eslint-plugin-promise": "7.2.1",
-    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-sonarjs": "3.0.5",
     "eslint-plugin-unicorn": "61.0.2",
     "eslint-plugin-unused-imports": "4.2.0",
-    "serve": "^14.2.5",
+    "serve": "14.2.5",
     "tailwindcss": "4.1.13",
     "typescript": "5"
   }
