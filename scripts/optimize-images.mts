@@ -14,7 +14,27 @@ const SUPPORTED_MIME_TYPES = [
   "image/tiff",
 ];
 const IMAGE_DIR = "public/assets/images";
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
+const MAX_FILE_SIZE = 10 * 1024 * 1024; //? 10MB limit
+
+enum ErrorType {
+  TRANSIENT = "transient",
+  PERMANENT = "permanent",
+  SECURITY = "security",
+}
+
+interface RetryConfig {
+  maxRetries: number;
+  baseDelay: number;
+  maxDelay: number;
+  exponentialBase: number;
+}
+
+const RETRY_CONFIG: RetryConfig = {
+  maxRetries: 3,
+  baseDelay: 1000, //? 1 second
+  maxDelay: 8000, //? 8 seconds max
+  exponentialBase: 2,
+};
 
 function isPathSafe(filePath: string, basePath: string): boolean {
   const resolvedPath = resolve(filePath);
@@ -22,14 +42,65 @@ function isPathSafe(filePath: string, basePath: string): boolean {
   return resolvedPath.startsWith(resolvedBasePath);
 }
 
+function categorizeError(error: Error): ErrorType {
+  const message = error.message.toLowerCase();
+
+  //? Security-related errors (validation failures)
+  if (
+    message.includes("path traversal") ||
+    message.includes("file too large") ||
+    message.includes("unsupported") ||
+    message.includes("validation failed")
+  ) {
+    return ErrorType.SECURITY;
+  }
+
+  //? Permanent errors (corrupted files, format issues)
+  if (
+    message.includes("input file missing") ||
+    message.includes("input file is empty") ||
+    message.includes("input buffer contains unsupported image format") ||
+    message.includes("premature end of input") ||
+    message.includes("corrupt") ||
+    message.includes("invalid")
+  ) {
+    return ErrorType.PERMANENT;
+  }
+
+  //? Transient errors (memory, locks, temporary issues)
+  if (
+    message.includes("memory") ||
+    message.includes("lock") ||
+    message.includes("busy") ||
+    message.includes("timeout") ||
+    message.includes("enoent") ||
+    message.includes("disk space") ||
+    message.includes("resource temporarily unavailable")
+  ) {
+    return ErrorType.TRANSIENT;
+  }
+
+  return ErrorType.TRANSIENT;
+}
+
+function calculateRetryDelay(attempt: number): number {
+  const delay =
+    RETRY_CONFIG.baseDelay * Math.pow(RETRY_CONFIG.exponentialBase, attempt);
+  return Math.min(delay, RETRY_CONFIG.maxDelay);
+}
+
+async function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function validateImageFile(filePath: string): Promise<boolean> {
   try {
-    // Path traversal protection
+    //? Path traversal protection
     if (!isPathSafe(filePath, IMAGE_DIR)) {
       throw new Error(`Path traversal attempt detected: ${filePath}`);
     }
 
-    // File size check
+    //? File size check
     const stats = await stat(filePath);
     if (stats.size > MAX_FILE_SIZE) {
       throw new Error(
@@ -39,7 +110,7 @@ async function validateImageFile(filePath: string): Promise<boolean> {
       );
     }
 
-    // MIME type validation
+    //? MIME type validation
     const fileType = await fileTypeFromFile(filePath);
     if (!fileType || !SUPPORTED_MIME_TYPES.includes(fileType.mime)) {
       throw new Error(
@@ -47,7 +118,7 @@ async function validateImageFile(filePath: string): Promise<boolean> {
       );
     }
 
-    // Extension validation (double check)
+    //? Extension validation (double check)
     const ext = extname(filePath).toLowerCase();
     if (!SUPPORTED_EXTENSIONS.includes(ext)) {
       throw new Error(`Unsupported file extension: ${ext}`);
@@ -63,6 +134,60 @@ async function validateImageFile(filePath: string): Promise<boolean> {
   }
 }
 
+async function optimizeImageWithRetry(
+  filePath: string,
+  outputPath: string,
+  attempt: number = 0
+): Promise<void> {
+  try {
+    await sharp(filePath)
+      .webp({
+        quality: 90,
+        effort: 4,
+      })
+      .toFile(outputPath);
+
+    if (attempt > 0) {
+      console.log(
+        `✅ Optimized: ${outputPath} (succeeded after ${attempt} retries)`
+      );
+    } else {
+      console.log(`✅ Optimized: ${outputPath}`);
+    }
+  } catch (error) {
+    const sharpError =
+      error instanceof Error ? error : new Error(String(error));
+    const errorType = categorizeError(sharpError);
+
+    //! Don't retry security or permanent errors
+    if (errorType === ErrorType.SECURITY || errorType === ErrorType.PERMANENT) {
+      throw sharpError;
+    }
+
+    //? Retry transient errors
+    if (
+      errorType === ErrorType.TRANSIENT &&
+      attempt < RETRY_CONFIG.maxRetries
+    ) {
+      const delay = calculateRetryDelay(attempt);
+      console.log(
+        `🔄 Retry ${attempt + 1}/${
+          RETRY_CONFIG.maxRetries
+        } for ${filePath} in ${delay}ms (${errorType} error: ${
+          sharpError.message
+        })`
+      );
+      await sleep(delay);
+      return optimizeImageWithRetry(filePath, outputPath, attempt + 1);
+    }
+
+    //? Max retries reached or unknown error type
+    throw new Error(
+      `Failed after ${attempt} retries (${errorType}): ${sharpError.message}`
+    );
+  }
+}
+
 async function optimizeImage(filePath: string): Promise<void> {
   try {
     const ext = extname(filePath).toLowerCase();
@@ -73,7 +198,6 @@ async function optimizeImage(filePath: string): Promise<void> {
       return;
     }
 
-    // Comprehensive validation
     try {
       await validateImageFile(filePath);
     } catch (validationError) {
@@ -88,21 +212,17 @@ async function optimizeImage(filePath: string): Promise<void> {
     }
 
     const outputPath = filePath.replace(ext, ".webp");
-
     console.log(`🔄 Converting ${filePath} -> WebP`);
 
-    await sharp(filePath)
-      .webp({
-        quality: 90,
-        effort: 4,
-      })
-      .toFile(outputPath);
-
-    console.log(`✅ Optimized: ${outputPath}`);
+    await optimizeImageWithRetry(filePath, outputPath);
   } catch (error) {
+    const finalError =
+      error instanceof Error ? error : new Error(String(error));
+    const errorType = categorizeError(finalError);
+
     console.error(
-      `❌ Error optimizing ${filePath}:`,
-      error instanceof Error ? error.message : String(error)
+      `❌ Error optimizing ${filePath} [${errorType}]:`,
+      finalError.message
     );
   }
 }
@@ -122,7 +242,7 @@ async function walkDirectory(dir: string): Promise<string[]> {
         imageFiles.push(...subFiles);
       } else if (stats.isFile()) {
         const ext = extname(fullPath).toLowerCase();
-        // Filter images directly during traversal (single-pass)
+        //? Filter images directly during traversal (single-pass)
         if (SUPPORTED_EXTENSIONS.includes(ext)) {
           imageFiles.push(fullPath);
         }

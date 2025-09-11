@@ -5,6 +5,7 @@ import {
   projects,
 } from "@/lib/content-data";
 import { seoData } from "@/lib/seo-data";
+import type { ProjectItem } from "@/lib/types";
 import DOMPurify from "dompurify";
 import { JSDOM } from "jsdom";
 import RSS from "rss";
@@ -13,6 +14,66 @@ export const dynamic = "force-static";
 
 const window = new JSDOM("").window;
 const purify = DOMPurify(window);
+
+// RSS Feed enhancement functions
+function getProjectPublicationDate(project: ProjectItem, index: number): Date {
+  // Create meaningful staggered dates based on project importance
+  // More important projects (AI Features, Web Apps) get more recent dates
+  const baseDate = new Date("2024-01-01"); // Portfolio baseline
+
+  // AI Features and Web Apps get priority (more recent dates)
+  const isPriority =
+    project.categories.includes("AI Features") ||
+    project.categories.includes("Web App");
+
+  const daysOffset = isPriority ? index * 20 : index * 30; // Priority projects closer together
+  return new Date(baseDate.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+}
+
+function getExperiencePublicationDate(index: number): Date {
+  // Experience entries get dates from 6 months ago, staggered
+  const baseDate = new Date();
+  baseDate.setMonth(baseDate.getMonth() - 6); // 6 months ago
+
+  const daysOffset = index * 45; // 45 days between experience items
+  return new Date(baseDate.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+}
+
+function getEducationPublicationDate(index: number): Date {
+  // Education entries from 1 year ago
+  const baseDate = new Date();
+  baseDate.setFullYear(baseDate.getFullYear() - 1); // 1 year ago
+
+  const daysOffset = index * 60; // 60 days between education items
+  return new Date(baseDate.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+}
+
+function getEnhancedCategories(project: ProjectItem): string[] {
+  // Create meaningful categories for RSS readers
+  const categories: string[] = [];
+
+  // Add primary category based on project type
+  if (project.categories.includes("AI Features")) {
+    categories.push("Artificial Intelligence");
+  }
+  if (project.categories.includes("Web App")) {
+    categories.push("Web Development");
+  }
+  if (project.categories.includes("Mobile App")) {
+    categories.push("Mobile Development");
+  }
+  if (project.categories.includes("API")) {
+    categories.push("Backend Development");
+  }
+
+  // Add technology categories
+  categories.push("Software Development");
+
+  // Add original categories (first 2 to avoid spam)
+  categories.push(...project.categories.slice(0, 2));
+
+  return [...new Set(categories)]; // Remove duplicates
+}
 
 function sanitizeHTML(html: string): string {
   return purify.sanitize(html, {
@@ -62,7 +123,7 @@ export async function GET(): Promise<Response> {
     )
     .slice(0, 5); //? Limit to top 5 projects
 
-  featuredProjects.forEach((project) => {
+  featuredProjects.forEach((project, index) => {
     const validated = validateFeedItem({
       title: `Project: ${project.title}`,
       description:
@@ -70,19 +131,26 @@ export async function GET(): Promise<Response> {
         `${project.title} - ${project.categories.join(", ")}`,
     });
 
+    const publicationDate = getProjectPublicationDate(project, index);
+    const enhancedCategories = getEnhancedCategories(project);
+
     feed.item({
       title: validated.title,
       description: validated.description,
       url: `${seoData.siteUrl}/#portfolio`,
       guid: `project-${project.title.toLowerCase().replace(/\s+/g, "-")}`,
-      categories: project.categories,
-      date: new Date(),
+      categories: enhancedCategories,
+      date: publicationDate,
+      author: `${personalInfo.email} (${personalInfo.name})`,
       custom_elements: [
         {
           "content:encoded": sanitizeHTML(
             project.description ||
               `<p>${project.title} - ${project.categories.join(", ")}</p>`
           ),
+        },
+        {
+          "dc:creator": personalInfo.name,
         },
       ],
     });
@@ -95,18 +163,24 @@ export async function GET(): Promise<Response> {
       description: exp.text.substring(0, 300) + "...",
     });
 
+    const publicationDate = getExperiencePublicationDate(index);
+
     feed.item({
       title: validated.title,
       description: validated.description,
       url: `${seoData.siteUrl}/#resume`,
       guid,
-      categories: ["Professional Experience"],
-      date: new Date(Date.now() - index * 24 * 60 * 60 * 1000), //? Stagger dates
+      categories: ["Professional Experience", "Career", "Software Development"],
+      date: publicationDate,
+      author: `${personalInfo.email} (${personalInfo.name})`,
       custom_elements: [
         {
           "content:encoded": sanitizeHTML(
             exp.text.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>")
           ),
+        },
+        {
+          "dc:creator": personalInfo.name,
         },
       ],
     });
@@ -119,15 +193,21 @@ export async function GET(): Promise<Response> {
       description: edu.text,
     });
 
+    const publicationDate = getEducationPublicationDate(index);
+
     feed.item({
       title: validated.title,
       description: validated.description,
       url: `${seoData.siteUrl}/#resume`,
       guid,
-      categories: ["Education"],
-      date: new Date(Date.now() - (index + 10) * 24 * 60 * 60 * 1000), //? Stagger dates
+      categories: ["Education", "Academic", "Computer Science"],
+      date: publicationDate,
+      author: `${personalInfo.email} (${personalInfo.name})`,
       custom_elements: [
         { "content:encoded": sanitizeHTML(`<p>${edu.text}</p>`) },
+        {
+          "dc:creator": personalInfo.name,
+        },
       ],
     });
   });
