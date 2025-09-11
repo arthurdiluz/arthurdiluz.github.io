@@ -176,6 +176,16 @@ export interface PerformanceSettings {
   dnsPrefetch: string;
   preconnect: string;
   fontPreload: string;
+  criticalAssets: {
+    profileImage: string;
+    companyLogo: string;
+    criticalCSS: string;
+    webVitalsScript: string;
+  };
+  resourceHints: {
+    prefetch: string[];
+    preload: string[];
+  };
 }
 
 export interface CompanyInfo {
