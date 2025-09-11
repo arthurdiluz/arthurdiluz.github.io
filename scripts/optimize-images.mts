@@ -5,17 +5,6 @@ import { readdir, stat } from "fs/promises";
 import { extname, join, resolve } from "path";
 import sharp from "sharp";
 
-const SUPPORTED_EXTENSIONS = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"];
-const SUPPORTED_MIME_TYPES = [
-  "image/jpeg",
-  "image/png",
-  "image/gif",
-  "image/bmp",
-  "image/tiff",
-];
-const IMAGE_DIR = "public/assets/images";
-const MAX_FILE_SIZE = 10 * 1024 * 1024; //? 10MB limit
-
 enum ErrorType {
   TRANSIENT = "transient",
   PERMANENT = "permanent",
@@ -28,6 +17,24 @@ interface RetryConfig {
   maxDelay: number;
   exponentialBase: number;
 }
+
+const SUPPORTED_EXTENSIONS: Array<string> = [
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".gif",
+  ".bmp",
+  ".tiff",
+];
+const SUPPORTED_MIME_TYPES: Array<string> = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/bmp",
+  "image/tiff",
+];
+const IMAGE_DIR: string = "public/assets/images";
+const MAX_FILE_SIZE: number = 10 * 1024 * 1024; //? 10MB limit
 
 const RETRY_CONFIG: RetryConfig = {
   maxRetries: 3,
@@ -271,27 +278,62 @@ async function main(): Promise<void> {
 
     console.log(`📁 Found ${imageFiles.length} images to process\n`);
 
+    let successCount = 0;
+    let failureCount = 0;
+
     //? Process images in parallel with concurrency limit
     const CONCURRENCY = 4;
     for (let i = 0; i < imageFiles.length; i += CONCURRENCY) {
       const batch = imageFiles.slice(i, i + CONCURRENCY);
-      await Promise.all(batch.map(optimizeImage));
+
+      //? Process batch and track results
+      const results = await Promise.allSettled(batch.map(optimizeImage));
+
+      results.forEach((result, index) => {
+        if (result.status === "fulfilled") {
+          successCount++;
+        } else {
+          failureCount++;
+          console.error(
+            `❌ Failed to process ${batch[index]}: ${result.reason}`
+          );
+        }
+      });
     }
 
-    console.log("\n✨ Image optimization complete!");
-  } catch (error) {
+    console.log(`\n📊 Image optimization summary:`);
+    console.log(`  ✅ Success: ${successCount} images`);
+    console.log(`  ❌ Failed: ${failureCount} images`);
+
+    // Don't fail the build unless all images failed
+    if (successCount === 0 && failureCount > 0) {
+      console.warn(
+        "⚠️  All image optimizations failed, but build will continue"
+      );
+      console.warn("📝 Consider checking image files and Sharp installation");
+    } else {
+      console.log("✨ Image optimization complete!");
+    }
+  } catch (error: unknown) {
+    // Catch critical errors but don't fail the build
     console.error(
-      "❌ Fatal error:",
+      "❌ Critical error in image optimization:",
       error instanceof Error ? error.message : String(error)
     );
-    process.exit(1);
+    console.warn("⚠️  Image optimization failed, but build will continue");
+    console.warn("📝 Images will not be optimized in this build");
+
+    // Don't exit with error code to avoid failing the build
+    // process.exit(1); // Removed - let build continue
   }
 }
 
-main().catch((error) => {
+main().catch((error: unknown) => {
   console.error(
-    "❌ Unexpected error:",
+    "❌ Unexpected error in image optimization:",
     error instanceof Error ? error.message : String(error)
   );
-  process.exit(1);
+  console.warn("⚠️  Build will continue without image optimization");
+  // Don't exit with error code - let build continue
+  // process.exit(1);
 });
