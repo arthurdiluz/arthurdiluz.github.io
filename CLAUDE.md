@@ -41,12 +41,42 @@ This file provides guidance to Claude Code (`claude.ai/code`) when working with 
    - Static build output: `./out` directory
    - All TypeScript and ESLint checks pass
 
+## Environment & Assets Management
+
+### Public Assets Structure
+
+The `public/assets/` directory contains all static assets organized by type:
+
+```text
+public/assets/
+├── css/          # Styles and font files
+├── images/       # Optimized images (WebP format preferred)
+│   └── pp.webp   # Profile picture (optimized via build script)
+└── pdf/          # Downloadable documents
+```
+
+### Asset Optimization Workflow
+
+- **Build-time Optimization**: `scripts/optimize-images.mjs` automatically converts images to WebP format
+- **Supported Formats**: .jpg, .jpeg, .png, .gif, .bmp, .tiff → .webp
+- **Manual Optimization**: Place original images in `public/assets/images/`, build process handles conversion
+- **Performance**: Images are configured with cache TTL of 1 year for optimal performance
+
+### Environment Configuration
+
+- **Node.js Version**: Managed via `.nvmrc` (lts/*)
+- **No Environment Variables**: This is a static site with no runtime environment requirements
+- **Build Environment**: All configuration is compile-time via TypeScript and Next.js config
+
 ## Development Commands
 
 ### Core Development
 
 - `yarn dev` - Start development server on `localhost:3000`
-- `yarn build` - Build static export for deployment
+- `yarn build` - **Enhanced**: Build with automated image optimization and static export
+  - Step 1: Runs `scripts/optimize-images.mjs` to convert images to WebP format
+  - Step 2: Executes `next build` for static export generation
+  - Outputs to `./out` directory with automated SEO files (sitemap.xml, robots.txt, manifest.json, feed.xml)
 - `yarn start` - Serve built static files using npx serve
 
 ### Code Quality & Validation
@@ -59,6 +89,28 @@ This file provides guidance to Claude Code (`claude.ai/code`) when working with 
 ### Maintenance
 
 - `yarn clean` - Clean build artifacts (.next, out) and yarn cache
+
+### Scripts & Automation
+
+#### Image Optimization Script (`scripts/optimize-images.mjs`)
+
+- **Purpose**: Converts images to WebP format during build process
+- **Execution**: Automatically runs as part of `yarn build` command
+- **Input**: Images in `public/assets/images/` with supported extensions
+- **Output**: WebP versions of images with quality optimization
+- **Safety**: Skips .webp files to prevent conversion loops
+
+#### GitHub Actions Workflows
+
+Located in `.github/workflows/`:
+
+- **`deploy.yml`**: Main deployment workflow
+  - Triggers on main branch pushes and manual dispatch
+  - Uses Node.js 20 with Yarn frozen lockfile
+  - Builds static export and deploys to GitHub Pages
+  - Adds `.nojekyll` file for proper GitHub Pages routing
+- **`claude-code-review.yml`**: AI-powered code review automation
+- **`claude.yml`**: CLI interaction and task automation
 
 ## Architecture Overview
 
@@ -81,6 +133,18 @@ This is a personal portfolio website built as a **static Next.js 15.5.2 applicat
 - **Page System**: Single-page application with dynamic content switching via `PageKey` type (`"about" | "resume" | "portfolio"`)
 - **Client-Side Rendering**: Main page component uses `"use client"` directive for interactivity
 - **Icon System**: Phosphor Icons with provider wrapper for consistent icon rendering
+
+### Route Handlers & SEO Automation
+
+- **Modern App Directory Structure**: Follows Next.js 13+ app directory conventions:
+  - `src/app/layout.tsx` - Root layout with generateMetadata function
+  - `src/app/page.tsx` - Main portfolio page with client-side state
+  - `src/app/not-found.tsx` - Custom 404 error page with portfolio design
+- **Automated SEO Routes**: All configured with `export const dynamic = "force-static"`:
+  - `sitemap.ts` - Auto-generates sitemap.xml from site structure  
+  - `robots.ts` - Auto-generates robots.txt with sitemap reference
+  - `manifest.ts` - Auto-generates PWA manifest for mobile installation
+  - `feed.xml/route.ts` - Auto-generates RSS feed from projects and experience data
 
 ### Key Components Structure
 
@@ -172,9 +236,19 @@ src/components/
 - **Static Content System**: Centralized content management in `src/lib/`:
   - `content-data.ts` - All portfolio content (personal info, services, projects, timeline, FAQs)
   - `types.ts` - Comprehensive TypeScript interfaces for all data structures
-  - `metadata.ts` - Next.js metadata configuration
   - `seo-data.ts` - SEO-specific data and settings
   - `schemas/` - Structured data schema generation
+
+### Modern SEO & Performance Architecture (Recently Enhanced)
+
+- **Automated Metadata Generation**: Uses `generateMetadata()` function in `src/app/layout.tsx` following Next.js 15+ patterns
+- **Dynamic SEO Routes**: Automated generation of SEO files:
+  - `src/app/sitemap.ts` - Generates sitemap.xml at build time
+  - `src/app/robots.ts` - Generates robots.txt at build time  
+  - `src/app/manifest.ts` - Generates web app manifest for PWA capabilities
+  - `src/app/feed.xml/route.ts` - Generates RSS feed from portfolio content
+- **Build-time Image Optimization**: `scripts/optimize-images.mjs` converts images to WebP format during build
+- **Static Export Compatibility**: All routes use `export const dynamic = "force-static"` for GitHub Pages deployment
 - **Type-Safe Content**: Comprehensive interfaces covering:
   - Personal information and contact details
   - Service items with descriptions and icons
@@ -240,10 +314,14 @@ src/components/
 - **Node.js**: Version 20 LTS (specified in `.nvmrc` and GitHub Actions)
 - **Package Manager**: Yarn with frozen lockfile for deterministic builds
 - **Dependencies**: Carefully curated with latest stable versions:
-  - Next.js 15.5.2 with React 19.1.1
+  - Next.js 15.5.3 with React 19.1.1
   - TypeScript 5 with comprehensive type checking
   - Tailwind CSS 4.1.13 with PostCSS processing
-  - Phosphor Icons 2.1.10 and Lucide React 0.542.0
+  - Phosphor Icons 2.1.10 and Lucide React 0.543.0
+- **Recent Performance & SEO Additions**:
+  - `sharp@0.33.5` - Build-time image optimization and WebP conversion
+  - `rss@1.2.2` + `@types/rss@0.0.32` - RSS feed generation from portfolio content
+  - Enhanced for content syndication and AI discovery optimization
 
 ### AI-Powered Development Tools
 
@@ -276,7 +354,9 @@ src/components/
 - **GitHub Pages**: Fully static export optimized for GitHub Pages hosting
 - **Build Output**: Static files in `out/` directory with Jekyll bypass (`.nojekyll`)
 - **SEO Optimization**: Complete SEO setup including:
-  - `robots.txt` and `sitemap.xml` in public directory
+  - Automated `robots.txt` and `sitemap.xml` generation via route handlers
+  - RSS feed generation for content syndication
+  - PWA manifest for mobile app installation
   - Structured data schemas with `schema-dts`
   - Rich metadata and Open Graph tags
   - Inter font optimization with variable weights
@@ -456,3 +536,107 @@ yarn add -D @testing-library/react @testing-library/jest-dom vitest
 ### Issue: Icons not rendering
 
 **Solution**: Verify PhosphorIconProvider wraps the app and icon imports are correct
+
+### Issue: Static export routes failing
+
+**Solution**: Ensure all route handlers include `export const dynamic = "force-static"` at the top of the file. Required for sitemap.ts, robots.ts, manifest.ts, and any route handlers in static export mode.
+
+### Issue: Image optimization script errors
+
+**Solution**: Check that Sharp is properly installed (`yarn install`) and images exist in `public/assets/images/`. The script automatically skips .webp files to avoid conversion loops.
+
+### Issue: RSS feed generation errors  
+
+**Solution**: Verify RSS package is installed and content data structures in `src/lib/content-data.ts` are properly formatted. Check that projects array and experience array contain required fields.
+
+### Issue: Asset loading failures
+
+**Solution**: Ensure assets are placed in `public/assets/` directory. Check that asset paths in components match actual file locations. Verify image optimization script completed successfully.
+
+### Issue: Route handler static export failures
+
+**Solution**: All route handlers (sitemap.ts, robots.ts, manifest.ts, feed.xml/route.ts) must include `export const dynamic = "force-static"` at the top level for static export compatibility.
+
+## Content Management Guidelines
+
+### Modifying Portfolio Content
+
+All portfolio content is centralized in `src/lib/content-data.ts` with type-safe interfaces defined in `src/lib/types.ts`.
+
+#### Adding New Projects
+
+1. **Update Project Data**:
+
+   ```typescript
+   // In src/lib/content-data.ts
+   export const projects: ProjectItem[] = [
+     // ... existing projects
+     {
+       title: "New Project",
+       description: "Project description",
+       imagePath: "/assets/images/project-image.webp",
+       // ... other required fields per ProjectItem interface
+     }
+   ];
+   ```
+
+2. **Type Safety**: Follow the `ProjectItem` interface in `src/lib/types.ts`
+3. **Image Assets**: Place images in `public/assets/images/` and run `yarn build` for WebP optimization
+4. **Validation**: Run `yarn check` to ensure type safety and code quality
+
+#### Updating Personal Information
+
+- **Contact Details**: Modify `personalInfo` object in `content-data.ts`
+- **Social Links**: Update `socialLinks` array with proper type checking
+- **Services**: Modify `services` array following `ServiceItem` interface
+
+#### Content Validation Checklist
+
+- [ ] All image paths reference actual files in `public/assets/images/`
+- [ ] TypeScript compilation passes (`yarn typecheck`)
+- [ ] ESLint validation passes (`yarn lint:strict`)
+- [ ] Build process completes successfully (`yarn build`)
+- [ ] All URLs and links are functional
+
+## Performance & Accessibility Guidelines
+
+### Web Vitals Monitoring
+
+- **Integration**: Web Vitals 5.1.0 included for Core Web Vitals tracking
+- **Metrics**: LCP, FID, CLS automatically measured in production
+- **Monitoring**: Implement custom analytics or reporting as needed
+
+### Accessibility Standards
+
+- **Target**: WCAG 2.1 AA compliance minimum
+- **Implementation**:
+  - Semantic HTML structure in all components
+  - Alt text for all images (defined in content-data.ts)
+  - Proper heading hierarchy (h1 → h2 → h3)
+  - Keyboard navigation support
+  - Color contrast validation via design system
+
+### Browser Support Matrix
+
+- **Primary Support**: Modern browsers (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
+- **Static Export**: Compatible with any web server or CDN
+- **Progressive Enhancement**: Core functionality works without JavaScript
+- **Mobile**: Responsive design with mobile-first approach
+
+### Performance Optimization Checklist
+
+- [ ] Images optimized to WebP format via build script
+- [ ] Fonts preloaded and optimized (Inter variable font)
+- [ ] Bundle size monitoring via Next.js build output
+- [ ] Static assets served with long cache headers (1 year TTL)
+- [ ] Core Web Vitals measured and optimized
+- [ ] Lighthouse performance score > 90
+
+### Accessibility Testing Checklist
+
+- [ ] Screen reader compatibility tested
+- [ ] Keyboard navigation fully functional
+- [ ] Color contrast meets WCAG AA standards
+- [ ] Alt text provided for all meaningful images
+- [ ] Focus indicators visible and consistent
+- [ ] Page structure logical and semantic
