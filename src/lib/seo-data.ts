@@ -32,5 +32,20 @@ export const seoData: SEOData = {
     dnsPrefetch: "https://fonts.googleapis.com",
     preconnect: "https://fonts.gstatic.com",
     fontPreload: "/fonts/inter-var.woff2",
+    criticalAssets: {
+      profileImage: personalInfo.avatarPath,
+      companyLogo: "/assets/images/iohub-logo.webp",
+      criticalCSS: "/styles/main.css",
+      webVitalsScript: "/js/web-vitals.js",
+    },
+    resourceHints: {
+      prefetch: [
+        "/assets/images/project-bonchef.webp",
+        "/assets/images/project-tourlibras.webp",
+        "/assets/images/project-bethehero.webp",
+        "/assets/images/project-2048.webp",
+      ],
+      preload: [personalInfo.avatarPath, "/assets/images/iohub-logo.webp"],
+    },
   },
 };

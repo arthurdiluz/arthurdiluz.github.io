@@ -127,6 +127,147 @@ export const faqs: FAQItem[] = [
       "Arthur is experienced in deploying and managing applications on cloud platforms, primarily AWS (EC2, S3, Lambda, RDS, ECS) and GCP. He is proficient with DevOps practices, including containerization with Docker, orchestration with Kubernetes, and setting up CI/CD pipelines using GitHub Actions and AWS CodePipeline.",
     category: "technical",
   },
+  //? --- Problem-Solving & Methodologies ---
+  {
+    question:
+      "How does Arthur approach complex software architecture decisions?",
+    answer:
+      "Arthur employs a systematic approach to architecture decisions: analyzing business requirements, evaluating scalability needs, considering team expertise, and future maintenance. He prioritizes clean code principles, SOLID design patterns, and modular architecture. For complex systems, he uses event-driven architecture, microservices when appropriate, and always considers the trade-offs between complexity and maintainability.",
+    category: "technical",
+  },
+  {
+    question:
+      "What problem-solving methodology does Arthur use for debugging complex issues?",
+    answer:
+      "Arthur follows a structured debugging methodology: reproducing the issue consistently, analyzing logs and error patterns, using debugging tools and profilers, implementing targeted logging, creating isolated test cases, and documenting solutions. He emphasizes understanding the root cause rather than applying quick fixes, ensuring long-term system stability.",
+    category: "technical",
+  },
+  {
+    question:
+      "How does Arthur handle performance optimization in web applications?",
+    answer:
+      "Arthur's performance optimization strategy includes: profiling applications using Chrome DevTools and Node.js profilers, implementing code splitting and lazy loading, optimizing database queries with proper indexing, using caching strategies (Redis, CDN), minimizing bundle sizes, implementing efficient algorithms, and monitoring Core Web Vitals. He prioritizes measuring before optimizing and focuses on user-perceivable improvements.",
+    category: "technical",
+  },
+  {
+    question: "What is Arthur's approach to API design and documentation?",
+    answer:
+      "Arthur designs RESTful APIs following OpenAPI specifications, implementing consistent error handling, proper HTTP status codes, and comprehensive validation. He uses tools like Swagger for documentation, implements rate limiting and authentication, follows semantic versioning, and ensures backward compatibility. API testing includes unit tests, integration tests, and contract testing.",
+    category: "technical",
+  },
+  {
+    question:
+      "How does Arthur ensure code quality and maintainability in projects?",
+    answer:
+      "Arthur maintains code quality through: implementing comprehensive ESLint configurations, using TypeScript for type safety, writing unit and integration tests (Jest, React Testing Library), conducting code reviews, following conventional commit standards, implementing CI/CD pipelines, using Prettier for consistent formatting, and documenting architectural decisions and API specifications.",
+    category: "technical",
+  },
+
+  //? --- Technology Recommendations & Industry Insights ---
+  {
+    question:
+      "What technology stack does Arthur recommend for modern web applications?",
+    answer:
+      "Arthur recommends: Next.js 14+ with App Router for React applications, TypeScript for type safety, Tailwind CSS for styling, PostgreSQL or MongoDB for databases, Redis for caching, AWS or Vercel for deployment, GitHub Actions for CI/CD, Jest and Cypress for testing, and Docker for containerization. The choice depends on project requirements, team expertise, and scalability needs.",
+    category: "recommendations",
+  },
+  {
+    question:
+      "How does Arthur evaluate and choose between different technologies?",
+    answer:
+      "Arthur evaluates technologies based on: community support and documentation quality, long-term maintenance and updates, learning curve for the team, performance characteristics, ecosystem maturity, integration capabilities, security considerations, and total cost of ownership. He prefers battle-tested solutions over bleeding-edge technologies for production systems.",
+    category: "recommendations",
+  },
+  {
+    question:
+      "What are Arthur's thoughts on AI integration in modern software development?",
+    answer:
+      "Arthur believes AI integration should be purposeful and user-centric. He recommends starting with well-defined use cases, using established APIs (OpenAI, Google Gemini), implementing proper error handling and fallbacks, considering data privacy and security, and measuring AI feature impact on user experience. He emphasizes that AI should enhance human capabilities rather than replace critical thinking.",
+    category: "recommendations",
+  },
+  {
+    question:
+      "What database selection criteria does Arthur use for different project types?",
+    answer:
+      "Arthur chooses databases based on: data structure requirements (relational vs. document), scalability needs, consistency requirements, query complexity, team expertise, and ecosystem integration. He recommends PostgreSQL for complex relational data, MongoDB for flexible document storage, Redis for caching and sessions, and considers factors like ACID compliance, replication, and backup strategies.",
+    category: "recommendations",
+  },
+  {
+    question:
+      "How does Arthur approach security in web application development?",
+    answer:
+      "Arthur implements security through: input validation and sanitization, authentication with JWT or session-based approaches, authorization with role-based access control, HTTPS implementation, SQL injection prevention, XSS protection, CORS configuration, rate limiting, security headers, dependency vulnerability scanning, and regular security audits. He follows OWASP guidelines and implements defense-in-depth strategies.",
+    category: "technical",
+  },
+
+  //? --- Project Management & Team Leadership ---
+  {
+    question:
+      "How does Arthur manage software projects from concept to deployment?",
+    answer:
+      "Arthur uses agile methodologies with: requirement gathering and user story creation, technical architecture planning, sprint planning and backlog management, daily standups and progress tracking, code review processes, continuous integration/deployment, user acceptance testing, and post-deployment monitoring. He emphasizes clear communication, realistic timelines, and iterative development with regular stakeholder feedback.",
+    category: "management",
+  },
+  {
+    question:
+      "What is Arthur's experience with team collaboration and remote work?",
+    answer:
+      "Arthur has extensive experience leading distributed teams using: Slack and Discord for communication, GitHub for code collaboration, Figma for design collaboration, Notion for documentation, Zoom for meetings, and project management tools like Linear or Jira. He emphasizes async communication, clear documentation, regular check-ins, and building team culture through virtual team building activities.",
+    category: "management",
+  },
+  {
+    question:
+      "How does Arthur handle project timeline estimation and scope management?",
+    answer:
+      "Arthur approaches estimation using: breaking down features into smaller tasks, considering technical debt and refactoring needs, accounting for testing and deployment time, including buffer time for unknowns, regular reassessment and communication with stakeholders. He manages scope through clear documentation, change request processes, and proactive communication about timeline impacts.",
+    category: "management",
+  },
+
+  //? --- Continuous Learning & Industry Trends ---
+  {
+    question:
+      "How does Arthur stay updated with rapidly evolving technology trends?",
+    answer:
+      "Arthur maintains current knowledge through: following industry leaders on Twitter/LinkedIn, reading technical blogs and documentation, participating in developer communities (Discord, Reddit), attending virtual conferences and webinars, contributing to open-source projects, experimenting with new technologies in side projects, and regularly reviewing and updating his technology stack.",
+    category: "learning",
+  },
+  {
+    question: "What emerging technologies is Arthur most excited about?",
+    answer:
+      "Arthur is particularly interested in: AI/ML integration in web applications, WebAssembly for performance-critical applications, edge computing and CDN innovations, serverless architecture evolution, real-time collaboration tools, progressive web app advancements, and sustainable software development practices. He evaluates emerging technologies for practical business applications rather than following hype cycles.",
+    category: "learning",
+  },
+  {
+    question:
+      "What advice does Arthur give to developers starting their careers?",
+    answer:
+      "Arthur advises new developers to: focus on fundamentals (algorithms, data structures, system design), build a strong portfolio with diverse projects, contribute to open-source projects, learn one technology deeply before jumping to others, practice problem-solving through coding challenges, develop soft skills (communication, collaboration), stay curious and embrace continuous learning, and find mentors in the developer community.",
+    category: "learning",
+  },
+
+  //? --- Business & Entrepreneurship ---
+  {
+    question:
+      "What business insights has Arthur gained from co-founding iOHub Digital?",
+    answer:
+      "Arthur learned valuable lessons about: identifying market needs through customer research, validating product concepts with MVP approaches, building scalable business models, managing cash flow and revenue forecasting, hiring and team building, customer retention strategies, and the importance of adapting quickly to market feedback. He emphasizes that technical excellence must align with business value creation.",
+    category: "business",
+  },
+  {
+    question:
+      "How does Arthur balance technical innovation with business pragmatism?",
+    answer:
+      "Arthur balances innovation and pragmatism by: evaluating new technologies for actual business impact, setting technical debt management schedules, prioritizing features based on user feedback and business metrics, implementing gradual technology migrations, maintaining documentation for business continuity, and ensuring team knowledge sharing. He advocates for evolution over revolution in established systems.",
+    category: "business",
+  },
+  {
+    question:
+      "What metrics does Arthur use to measure software project success?",
+    answer:
+      "Arthur measures project success through: user engagement and retention metrics, performance benchmarks (load times, uptime), business KPIs (conversion rates, revenue impact), code quality metrics (test coverage, technical debt), team velocity and satisfaction, customer satisfaction scores, and post-deployment stability metrics. He emphasizes measuring both technical and business outcomes.",
+    category: "business",
+  },
+
   //? --- Experience & Projects ---
   {
     question: "What is iOHub Digital and what is Arthur's role?",
@@ -153,6 +294,24 @@ export const faqs: FAQItem[] = [
     answer:
       "Prior to iOHub, Arthur's notable projects include 'Certify MyRent,' a multi-tenant real estate management platform on AWS; 'Construction Help Finder,' a mobile app for which he integrated in-app payments with RevenueCat; and 'Madalu,' a beauty service scheduling system where he architected the backend foundation using NestJS and PostgreSQL.",
     category: "experience",
+  },
+  {
+    question: "Can Arthur work remotely or relocate for the right opportunity?",
+    answer:
+      "Yes, Arthur is open to both remote work and relocation for the right opportunity. He has extensive experience working with international teams and clients, having successfully managed remote teams at iOHub Digital and delivered projects for clients worldwide. His English proficiency and proven track record with remote collaboration make him an ideal candidate for distributed teams.",
+    category: "general",
+  },
+  {
+    question: "What are Arthur's top 3 technical skills?",
+    answer:
+      "Arthur's top 3 technical skills are: 1) Full-stack development with Node.js and React/Next.js - he's built multiple production SaaS applications from scratch, 2) AI implementation and RAG architecture - he designed and implemented conversational AI systems with vector databases, and 3) Cloud architecture and DevOps - he has extensive experience deploying scalable applications on AWS with Docker and CI/CD pipelines.",
+    category: "technical",
+  },
+  {
+    question: "How can I contact Arthur for work opportunities?",
+    answer:
+      "You can contact Arthur via email at arthurdiluz@outlook.com, connect with him on LinkedIn at https://www.linkedin.com/in/arthurdiluz/, or view his work on GitHub at https://github.com/arthurdiluz. He's actively seeking new opportunities as a Software Developer and is responsive to professional inquiries.",
+    category: "general",
   },
 ];
 
