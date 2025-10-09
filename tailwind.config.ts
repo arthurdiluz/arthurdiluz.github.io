@@ -9,49 +9,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "450px",
+        sm: "580px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1250px",
+      },
       fontFamily: {
-        sans: ["var(--font-inter)", "Roboto", "sans-serif"],
+        sans: ["var(--font-poppins)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
       colors: {
-        //? Primary brand colors
-        primary: "#0070f3",
-        secondary: "#ff4081",
-        accent: "#f5a623",
-
-        //? Status colors
-        success: "#4caf50",
-        warning: "#ffc107",
-        error: "#f44336",
-
-        //? Neutral grays
-        "light-gray": "#f6f6f6",
-        "dark-gray": "#333333",
-
-        //? Custom portfolio colors
-        onyx: "#2b2b2b",
         jet: "#383838",
+        onyx: "#2b2b2b",
         "eerie-black-1": "#212121",
         "eerie-black-2": "#1f1f1f",
         "smoky-black": "#121212",
         "white-1": "#ffffff",
         "white-2": "#fafafa",
-
-        //? Accent colors
-        highlight: "#2ecc71", //? Main highlight color
-        "highlight-50": "#e8f8f0",
-        "highlight-100": "#d1f2e1",
-        "highlight-200": "#a3e5c3",
-        "highlight-300": "#75d8a5",
-        "highlight-400": "#47cb87",
-        "highlight-500": "#2ecc71", //? Main highlight
-        "highlight-600": "#25a35a",
-        "highlight-700": "#1c7a43",
-        "highlight-800": "#13512c",
-        "highlight-900": "#0a2815",
-        "light-gray-70": "#d6d6d6",
+        highlight: "#2ecc71",
+        "highlight-dark": "#25a35a",
+        "light-gray": "#d6d6d6",
+        "light-gray-70": "rgba(214, 214, 214, 0.7)",
         "bittersweet-shimmer": "#d63384",
-
-        //? Transparent colors for overlays and shadows
         "black-10": "rgba(0, 0, 0, 0.1)",
         "black-15": "rgba(0, 0, 0, 0.15)",
         "black-25": "rgba(0, 0, 0, 0.25)",
@@ -60,14 +42,33 @@ const config: Config = {
         "white-10": "rgba(255, 255, 255, 0.1)",
         "white-11": "rgba(255, 255, 255, 0.11)",
         "white-15": "rgba(255, 255, 255, 0.15)",
-
-        //? Dark text color from globals.css
-        "text-dark": "rgb(17, 24, 39)",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-onyx": "linear-gradient(to bottom right, #404040 3%, #303030 97%)",
+        "gradient-jet":
+          "linear-gradient(135deg, rgba(43,43,43,0.251) 0%, rgba(28,28,28,0) 100%), #212121",
+        "gradient-highlight-1":
+          "linear-gradient(135deg, #2ecc71 0%, rgba(46,204,113,0) 50%)",
+        "gradient-highlight-2":
+          "linear-gradient(135deg, rgba(46,204,113,0.251) 0%, rgba(46,204,113,0) 59.86%), #212121",
+        "border-gradient-onyx":
+          "linear-gradient(to bottom right, #404040 0%, rgba(64, 64, 64, 0) 50%)",
+        "text-gradient-highlight": "linear-gradient(to right, #2ecc71, #25a35a)",
+      },
+      boxShadow: {
+        1: "-4px 8px 24px rgba(0, 0, 0, 0.25)",
+        2: "0 16px 30px rgba(0, 0, 0, 0.25)",
+        3: "0 16px 40px rgba(0, 0, 0, 0.25)",
+        4: "0 25px 50px rgba(0, 0, 0, 0.15)",
+        5: "0 24px 80px rgba(0, 0, 0, 0.25)",
+      },
+      transitionDuration: {
+        250: "250ms",
+        500: "500ms",
+      },
+      transitionTimingFunction: {
+        standard: "ease",
+        "in-out": "ease-in-out",
       },
     },
   },

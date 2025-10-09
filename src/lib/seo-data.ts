@@ -29,9 +29,9 @@ export const seoData: SEOData = {
       p.categories.includes("AI Features") || p.categories.includes("Web App")
   ),
   performance: {
-    dnsPrefetch: "https://fonts.googleapis.com",
-    preconnect: "https://fonts.gstatic.com",
-    fontPreload: "/fonts/inter-var.woff2",
+    dnsPrefetch: "",
+    preconnect: "",
+    fontPreload: "",
     criticalAssets: {
       profileImage: personalInfo.avatarPath,
       companyLogo: "/assets/images/iohub-logo.webp",

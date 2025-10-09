@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
-    @apply text-gray-900 leading-relaxed;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  h1 {
-    @apply font-extrabold text-4xl md:text-5xl;
+  html {
+    font-family: var(--font-poppins), sans-serif;
   }
-  h2 {
-    @apply font-bold text-3xl md:text-4xl;
+
+  body {
+    background-color: #121212;
+    color: #fafafa;
+    line-height: 1.625;
   }
-  h3 {
-    @apply font-semibold text-2xl md:text-3xl;
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
-  h4 {
-    @apply font-semibold text-xl;
+
+  li {
+    list-style: none;
   }
-  h5 {
-    @apply font-medium text-lg;
+
+  img,
+  ion-icon,
+  a,
+  button,
+  time,
+  span {
+    display: block;
   }
-  h6 {
-    @apply font-medium text-base;
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+  }
+
+  input,
+  textarea {
+    background: none;
+    color: inherit;
+    display: block;
+    font: inherit;
+    width: 100%;
+  }
+
+  ::selection {
+    background-color: #2ecc71;
+    color: #121212;
+  }
+
+  :focus-visible {
+    outline-color: #2ecc71;
   }
 }

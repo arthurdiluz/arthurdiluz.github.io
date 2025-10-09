@@ -4,11 +4,48 @@ import "./globals.css";
 import { generateStructuredData } from "@/lib/schemas/structured-data";
 import { seoData } from "@/lib/seo-data";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import type { JSX, ReactNode } from "react";
 import type { Thing, WithContext } from "schema-dts";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { performance } = seoData;
+  const preloadHints: string[] = [];
+
+  if (performance.fontPreload) {
+    preloadHints.push(
+      `<${performance.fontPreload}>; rel=preload; as=font; type=font/woff2; crossorigin`
+    );
+  }
+
+  preloadHints.push(
+    ...performance.resourceHints.preload.map(
+      (asset) => `<${asset}>; rel=preload; as=image`
+    )
+  );
+
+  const prefetchHints = performance.resourceHints.prefetch.map(
+    (asset) => `<${asset}>; rel=prefetch; as=image`
+  );
+
+  const other: Record<string, string> = {};
+
+  if (performance.dnsPrefetch) {
+    other["dns-prefetch"] = performance.dnsPrefetch;
+  }
+
+  if (performance.preconnect) {
+    other.preconnect = performance.preconnect;
+  }
+
+  if (preloadHints.length > 0) {
+    other.preload = preloadHints.join(", ");
+  }
+
+  if (prefetchHints.length > 0) {
+    other.prefetch = prefetchHints.join(", ");
+  }
+
   return {
     title: `${seoData.name} - ${seoData.jobTitle}`,
     description: seoData.description,
@@ -43,19 +80,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [seoData.profileImage],
     },
     icons: [{ rel: "icon", url: "/favicon.ico" }],
-    other: {
-      "dns-prefetch": seoData.performance.dnsPrefetch,
-      preconnect: seoData.performance.preconnect,
-      preload: [
-        seoData.performance.fontPreload,
-        ...seoData.performance.resourceHints.preload.map(
-          (asset) => `<${asset}>; rel=preload; as=image`
-        ),
-      ].join(", "),
-      prefetch: seoData.performance.resourceHints.prefetch
-        .map((asset) => `<${asset}>; rel=prefetch; as=image`)
-        .join(", "),
-    },
+    other: Object.keys(other).length > 0 ? other : undefined,
   };
 }
 
@@ -72,6 +97,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,7 +112,11 @@ export default function RootLayout({
   const schemas: WithContext<Thing>[] = generateStructuredData();
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${poppins.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {schemas.map((schema, index) => (
           <script
@@ -90,7 +126,9 @@ export default function RootLayout({
           />
         ))}
       </head>
-      <body className="antialiased font-sans">{children}</body>
+      <body className="antialiased bg-smoky-black text-white-2 font-poppins">
+        {children}
+      </body>
     </html>
   );
 }
